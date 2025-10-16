@@ -1,6 +1,7 @@
 import { roomsData } from './roomsData';
 import { RoomsSpecificActions } from './roomsSpecificActions';
 import { BaseRoom } from './baseRoom';
+import { shuffle } from 'lodash';
 
 export class RoomsManager {
 
@@ -42,5 +43,16 @@ export class RoomsManager {
             basicRoomsList,
             additionalRoomsList
         };
+    }
+
+    getShuffledRoomsForBoardSetting() {
+        let { specialRoomsList, basicRoomsList, additionalRoomsList } = this.createRoomsList();
+        basicRoomsList = shuffle(basicRoomsList);
+        additionalRoomsList = shuffle(additionalRoomsList);
+        return {
+            specialRoomsList,
+            basicRoomsList,
+            additionalRoomsList
+        }
     }
 }
