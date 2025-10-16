@@ -1,4 +1,5 @@
-const roomsData = {
+// using Factory Pattern to avoid code multiplication and maintain data separation
+export const roomsData = {
     cockpit: {
         roomName: 'Cockpit',
         roomType: 'special',
@@ -15,6 +16,7 @@ const roomsData = {
             'Journey destination marker determines final destination among the 4 possible coordinates. \n' +
             'Attention! In this room, Search action is not available. \n\n',
         isComputer: true,
+        actionsKey: 'cockpitRoomActions',
     },
     hibernatorium: {
         roomName: 'Hibernatorium',
@@ -29,9 +31,10 @@ const roomsData = {
             'Note! You cannot perform the "Search" action in this room. \n' +
             'Note! The onboard computer is programmed to protect hibernated crew members and prevent any actions that might endanger their lives. \n\n',
         isComputer: false,
+        actionsKey: 'hibernatoriumRoomActions',
     },
     engineRoom: {
-        roomName: 'Engine room',
+        roomName: 'Engine',
         roomType: 'special',
         roomDescription: 'This is engine room \n' +
             'Check the engine \n' +
@@ -49,6 +52,7 @@ const roomsData = {
             'At the end of the game, if the ship has not been destroyed earlier, all top engine tokens must be revealed to determine whether the ship exploded during the hyperspace jump attempt. \n' +
             'Note! You cannot perform the "Search" action in this room. \n\n',
         isComputer: false,
+        actionsKey: 'engineRoomActions',
     },
     armory: {
         roomName: 'Armory',
@@ -59,15 +63,17 @@ const roomsData = {
             'Attention! This room doesn\'t allow to charge classical weapon. \n ' +
             'Attention! Cartridge marker count on weapon\'s card cannot exceed maximum magazine capacity \n\n',
         isComputer: false,
+        actionsKey: 'armoryRoomActions',
     },
     communicationRoom: {
-        roomName: 'CommunicationRoom',
+        roomName: 'Communication room',
         roomType: 'basic',
         roomDescription: 'This is communication room \n' +
             'Send a signal. \n ' +
             'Put status marker on Set signal section of your board. \n ' +
             'Sending a signal is a requirement for some of the objective cards and doesn\'t have any other use in the game. \n\n',
         isComputer: true,
+        actionsKey: 'communicationRoomActions',
     },
     decontaminationRoom: {
         roomName: 'Decontamination room',
@@ -79,6 +85,7 @@ const roomsData = {
             'After scanning, your character suffers 1 Light Wound and you automatically pass. Shuffle all your Action cards (including those in hand and in the discard pile) and form a new Action deck. \n' +
             'Note: After the decontamination procedure, you must always pass. Your hand remains empty until the start of the next round. \n\n',
         isComputer: false,
+        actionsKey: 'decontaminationRoomActions',
     },
     evacuationSector: {
         roomName: 'Evacuation sector',
@@ -92,6 +99,7 @@ const roomsData = {
             'Check \"Emergency capsules\" frame at the end of this chapter to obtain information what happens once character enters emergency capsule. \n' +
             'Character cannot enter emergency capsule if any Nemesis is present in the room. \n\n',
         isComputer: false,
+        actionsKey: 'evacuationSectorRoomActions',
     },
     fireControlCenter: {
         roomName: 'Fire control center',
@@ -103,6 +111,7 @@ const roomsData = {
             'All intruders flee from that room (in random directions determined by drawing Event cards – 1 card per intruder). \n' +
             'Tip: You can use the fire control procedure even if there is no fire in the chosen room, in order to drive away intruders located there. \n\n',
         isComputer: true,
+        actionsKey: 'fireControlCenterRoomActions',
     },
     generator: {
         roomName: 'Generator',
@@ -117,6 +126,7 @@ const roomsData = {
             'Note: The self-destruct countdown cannot be started if any character is already hibernated. \n' +
             'If jump takes place while the self-destruct countdown is active, the ship explodes. \n\n',
         isComputer: true,
+        actionsKey: 'generatorRoomActions',
     },
     laboratory: {
         roomName: 'Laboratory',
@@ -127,6 +137,7 @@ const roomsData = {
             'Reveal 1 intruder weakness card related to the object. \n' +
             'The object is not discarded after the examination is completed. However, the player may drop it without spending an action. \n\n',
         isComputer: true,
+        actionsKey: 'laboratoryRoomActions',
     },
     nest: {
         roomName: 'Nest',
@@ -148,6 +159,7 @@ const roomsData = {
             'You can also throw a grenade into a room containing uncarried eggs, just like when intruders are present in the room. A grenade destroys 2 eggs. A Molotov cocktail destroys 1 egg. \n' +
             'After each individual attempt to destroy an egg, you must perform a Noise roll. \n\n',
         isComputer: false,
+        actionsKey: 'nestRoomActions',
     },
     storage: {
         roomName: 'Storage',
@@ -156,6 +168,7 @@ const roomsData = {
             'Search for an Item \n' +
             'Draw 2 cards from the item deck of any color (red, yellow, or blue). \n\n',
         isComputer: false,
+        actionsKey: 'storageRoomActions',
     },
     treatmentRoom: {
         roomName: 'Treatment room',
@@ -164,6 +177,7 @@ const roomsData = {
             'Heal your wounds. \n' +
             'Bandage all of your severe injuries OR heal one bandaged severe injury OR bandage all of your shallow injuries \n\n',
         isComputer: false,
+        actionsKey: 'treatmentRoomActions',
     },
     airlock: {
         roomName: 'Airlock',
@@ -177,6 +191,7 @@ const roomsData = {
             'If there was a fire marker in the room, remove it.\n' +
             'Bodies, intruder corpses, and dropped items remain in the room. \n\n',
         isComputer: false,
+        actionsKey: 'airlockRoomActions',
     },
     cabins: {
         roomName: 'Cabins',
@@ -186,6 +201,7 @@ const roomsData = {
             'If at the start of a new round your character is in this room and there are no intruders present, draw 1 additional action card (draw up to 6 instead of 5). \n ' +
             'This room action does not work if there is a malfunction marker in the room. \n\n',
         isComputer: false,
+        actionsKey: 'cabinsRoomActions',
     },
     canteen: {
         roomName: 'Canteen',
@@ -197,6 +213,7 @@ const roomsData = {
             'If at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n ' +
             'If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n',
         isComputer: false,
+        actionsKey: 'canteenRoomActions',
     },
     commandCenter: {
         roomName: 'Command center',
@@ -206,9 +223,10 @@ const roomsData = {
             'You may choose 1 room and open or close any doors in the corridors leading to that room. \n ' +
             'You can decide which doors to open and which to close — you don’t have to open or close all of them. \n\n',
         isComputer: true,
+        actionsKey: 'commandCenterRoomActions',
     },
     engineControlRoom: {
-        roomName: 'Engine control room',
+        roomName: 'Engine control',
         roomType: 'additional',
         roomDescription: 'This is engine control room \n' +
             'Check Engine Status \n' +
@@ -216,14 +234,16 @@ const roomsData = {
             'You can check the status of an engine even if there is a malfunction marker in its Engine Room. \n ' +
             'You cannot change engine status from the Engine Control Room. \n\n',
         isComputer: true,
+        actionsKey: 'engineControlRoomActions',
     },
     podsControlRoom: {
-        roomName: 'Pods control room',
+        roomName: 'Pods control',
         roomType: 'additional',
         roomDescription: 'This is pods control room \n' +
             'Close/Open 1 Escape Pod \n' +
             'Flip 1 Escape Pod token to its closed or open side. \n\n',
         isComputer: false,
+        actionsKey: 'podsControlRoomActions',
     },
     showers: {
         roomName: 'Showers',
@@ -235,6 +255,7 @@ const roomsData = {
             'If at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n ' +
             'If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n',
         isComputer: false,
+        actionsKey: 'showersRoomActions',
     },
     slimeCoveredRoom: {
         roomName: 'Slime covered room',
@@ -242,6 +263,8 @@ const roomsData = {
         roomDescription: 'This is slime covered room \n' +
             'You\'ve been slimmed!\n' +
             'When you enter this room, you automatically gain a Slime marker. \n\n',
+        isComputer: false,
+        actionsKey: 'slimeCoveredRoomActions',
     },
     surveillanceRoom: {
         roomName: 'Surveillance room',
@@ -252,5 +275,6 @@ const roomsData = {
             'After looking, return them to their place. \n ' +
             'You may, but don’t have to, tell the truth about what you saw. \n\n',
         isComputer: true,
+        actionsKey: 'surveillanceRoomActions',
     }
 }

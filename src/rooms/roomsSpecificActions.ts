@@ -1,16 +1,22 @@
-export class RoomsSpecificActions {
+// interface created to keep type safety
+interface RoomActionMap {
+    [key: string]: Record<string, (...args: any[]) => Promise<void>>;
+}
+
+export class RoomsSpecificActions implements RoomActionMap {
+    [key: string]: Record<string, (...args: any[]) => Promise<void>>;
 
     static cockpitRoomActions = {
         async checkCoordinates(){},
         async changeCoordinates(){}
-    };
+    }
 
     static engineRoomActions = {
         async checkEngine(){},
         async changeEngine(){},
-    };
+    }
 
-    static hibernationRoomActions = {
+    static hibernatoriumRoomActions = {
         async goHibernate(){}
     }
 
@@ -27,18 +33,18 @@ export class RoomsSpecificActions {
         async removeLarva(){}
     }
 
-    static evacuationSectorActions = {
+    static evacuationSectorRoomActions = {
         async attemptEvacuation(){}
     }
 
-    static fireControlCenterActions = {
+    static fireControlCenterRoomActions = {
         async putOutFire(){}
     }
 
     static generatorRoomActions = {
         async startCountdown(){},
         async stopCountdown(){}
-    }
+    };
 
     static laboratoryRoomActions = {
         async examineObject(examinedObject: string){}
@@ -61,7 +67,7 @@ export class RoomsSpecificActions {
         async initiateAirlockProcedure(){}
     }
 
-    static cabinRoomActions = {
+    static cabinsRoomActions = {
         async restInCabin(){}
     }
 
@@ -83,8 +89,12 @@ export class RoomsSpecificActions {
         async closeEscapePod(){}
     }
 
-    static showerRoomActions = {
+    static showersRoomActions = {
         async takeShower(){}
+    }
+
+    static slimeCoveredRoomActions = {
+        async getCovered(){}
     }
 
     static surveillanceRoomActions = {
