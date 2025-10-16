@@ -1,3 +1,14 @@
+import {RoomsSpecificActions} from "./roomsSpecificActions";
+
+// adding interface for data structure consistency and autocompletion support
+interface RoomsData {
+    roomName: string;
+    roomType: 'special' | 'basic' | 'additional';
+    roomDescription: string;
+    isComputer: boolean;
+    actionsKey: keyof typeof RoomsSpecificActions;
+}
+
 // using Factory Pattern to avoid code multiplication and maintain data separation
 export const roomsData = {
     cockpit: {

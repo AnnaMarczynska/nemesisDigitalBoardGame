@@ -8,6 +8,10 @@ export class BaseRoom {
                 public roomActions: string[])
     {};
 
+    static createRoom(value: any, specificActions: string[]){
+        return new BaseRoom(value.roomName, value.roomType, value.roomDescription, value.isComputer, specificActions);
+    };
+
     async getItem(){};
     async repairRoom(){};
 }
