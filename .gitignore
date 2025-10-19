@@ -10,3 +10,5 @@ yarn-error.log*
 
 .vscode/*
 .idea/notes.txt
+src/dataStorage/corridorsBoard.json
+src/dataStorage/roomsBoard.json

@@ -1,4 +1,4 @@
-import {roomsData} from './roomsData';
+import {roomsData} from '../dataStorage/roomsData';
 import {RoomsSpecificActions} from './roomsSpecificActions';
 import {BaseRoom} from './baseRoom';
 import {shuffle} from 'lodash';
@@ -6,7 +6,7 @@ import {shuffle} from 'lodash';
 export class RoomsManager {
 
     // map approach selected as access to specific room will be often needed
-    createRoomsList() {
+    static createRoomsList() {
         const specialRoomsList = [];
         const basicRoomsList = [];
         const additionalRoomsList = [];
@@ -52,7 +52,7 @@ export class RoomsManager {
         return {specialRoomsList, basicRoomsList, additionalRoomsList};
     }
 
-    getShuffledRoomsForBoardSetting() {
+    static getShuffledRoomsForBoardSetting() {
         let {specialRoomsList, basicRoomsList, additionalRoomsList} = this.createRoomsList();
         basicRoomsList = shuffle(basicRoomsList);
         additionalRoomsList = shuffle(additionalRoomsList);

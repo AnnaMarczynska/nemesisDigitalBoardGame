@@ -1,12 +1,12 @@
-import {RoomsSpecificActions} from "./roomsSpecificActions";
+import {RoomsSpecificActions} from "../rooms/roomsSpecificActions";
 
 // adding interface for data structure consistency and autocompletion support
-interface RoomsData {
+export interface RoomsData {
     roomName: string;
     roomType: 'special' | 'basic' | 'additional';
     roomDescription: string;
     isComputer: boolean;
-    actionsKey: keyof typeof RoomsSpecificActions;
+    actionsKey?: keyof typeof RoomsSpecificActions;
 }
 
 // using Factory Pattern to avoid code multiplication and maintain data separation
