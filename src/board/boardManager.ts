@@ -3,8 +3,7 @@ import {corridorsData} from '../dataStorage/corridorsData';
 import {Hex} from './hex';
 import {Corridor} from './corridor';
 import {RoomsManager} from '../rooms/roomsManager';
-import {Helpers} from "../helpers";
-
+import {Helpers} from '../helpers';
 
 export class BoardManager {
     helpers = new Helpers();
