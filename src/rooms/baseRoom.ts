@@ -1,3 +1,5 @@
+import {roomStatusesData} from "../dataStorage/roomStatusesData";
+
 export class BaseRoom {
     //using parameter properties to reduce boilerplate code
     //using this type of constructor for type safety and possible refactoring and future extensions
@@ -5,12 +7,10 @@ export class BaseRoom {
                 public roomType: 'special' | 'basic' | 'additional',
                 public roomDescription: string,
                 public isComputer: boolean,
-                public roomActions: string[])
+                public roomActions: string[],
+                public roomStatus: string,
+                public itemsCount: number)
     {};
-
-    static createRoom(value: any, specificActions: string[]){
-        return new BaseRoom(value.roomName, value.roomType, value.roomDescription, value.isComputer, specificActions);
-    };
 
     async getItem(){};
     async repairRoom(){};
