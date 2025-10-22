@@ -31,6 +31,7 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
 ### other files
 
     - helpers.ts: helper functions used across the project like board saving/loading, easier data formatting
+    - ripples.ts: handles ripple test and ripple effects on corridors
     - scripts.ts: scripts for maintaining game process
 
 ## Scripts

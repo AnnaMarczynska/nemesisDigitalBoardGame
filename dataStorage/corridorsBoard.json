@@ -1,4 +1,4 @@
-[ { "id": 1, "areRipples": false, "connectedRooms": [ 1, 2 ]
+[ { "id": 1, "areRipples": true, "connectedRooms": [ 1, 2 ]
   },
   {
     "id": 2,

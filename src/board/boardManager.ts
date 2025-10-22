@@ -17,17 +17,17 @@ export class BoardManager {
         return hexesBoard;
     }
 
-    setCorridorsBoard() {
+    async setCorridorsBoard() {
         const corridorsBoard: Corridor[] = [];
         for (const [id, corridorData] of Object.entries(corridorsData)) {
             const corridor = Corridor.createCorridor(Number(id), corridorData.areRipples, corridorData.ripplesValue, corridorData.connectedRooms);
             corridorsBoard.push(corridor);
         }
-        this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json');
+        await this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json');
         return corridorsBoard;
     }
 
-    setRoomsBoard() {
+    async setRoomsBoard() {
         const hexesBoard = this.setHexesBoard();
         const roomsBoard = RoomsManager.getShuffledRoomsForBoardSetting();
         let basicRoomIndex = 0;
@@ -50,7 +50,7 @@ export class BoardManager {
                 if (hex.id === 21) hex.assignedRoom = roomsBoard.specialRoomsList[4];
             }
         }
-        this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
+        await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
         return hexesBoard;
     }
 }

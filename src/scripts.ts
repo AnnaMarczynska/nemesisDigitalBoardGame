@@ -1,6 +1,8 @@
 import {BoardManager} from './board/boardManager';
+import {Ripples} from './ripples';
 
 const boardManager = new BoardManager();
+const ripples = new Ripples();
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
@@ -17,8 +19,15 @@ async function gameSetup() {
     console.log('Game setup complete. ✅ ');
 }
 
+async function ripplesTest() {
+    console.log('Rolling ripple test... 🌊🌊🌊 ');
+    await ripples.ripplesRoll();
+    console.log('Ripples test complete. ✅ ');
+}
+
 const scripts: { [key: string]: () => Promise<void> } = {
     gameSetup,
+    ripplesTest
 }
 
 const scriptName = process.argv[2];
