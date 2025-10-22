@@ -2,11 +2,11 @@ import {roomsData} from '../dataStorage/roomsData';
 import {RoomsSpecificActions} from './roomsSpecificActions';
 import {BaseRoom} from './baseRoom';
 import {shuffle} from 'lodash';
-import {roomStatusesData} from '../dataStorage/roomStatusesData';
+import {RoomStatusesData, roomStatusesData} from '../dataStorage/roomStatusesData';
 
 export class RoomsManager {
 
-    static setRoomStatuses() {
+    static setRoomStatuses(): RoomStatusesData[] {
         return shuffle(roomStatusesData);
     }
 
@@ -21,8 +21,8 @@ export class RoomsManager {
     };
 
     // map approach selected as access to specific room will be often needed
-    static createRoomsList() {
-        const specialRoomsList = [];
+    static createRoomsList(): { specialRoomsList: BaseRoom[], basicRoomsList: BaseRoom[], additionalRoomsList: BaseRoom[] } {
+        const specialRoomsList= [];
         const basicRoomsList = [];
         const additionalRoomsList = [];
 
@@ -31,7 +31,7 @@ export class RoomsManager {
             const actionKey = value.actionsKey as keyof typeof RoomsSpecificActions;
             const roomSpecificActions = RoomsSpecificActions[actionKey];
             const action = Object.keys(roomSpecificActions);
-            const roomStatuses = this.setRoomStatuses();
+            const randomRoomStatuses: RoomStatusesData[] = this.setRoomStatuses();
 
             switch (value.roomType) {
                 case 'special':
@@ -41,7 +41,7 @@ export class RoomsManager {
                             specialRoomsList.push(this.createRoom(roomCopy, action));
                         }
                     }
-                    specialRoomsList.push(this.createRoom(value, action, roomStatuses));
+                    specialRoomsList.push(this.createRoom(value, action, randomRoomStatuses));
                     break;
                 case 'basic':
                     if (value.roomName === 'Evacuation pod') {
@@ -49,10 +49,10 @@ export class RoomsManager {
                             value.roomName = `Evacuation pod ${i + 1}`;
                         }
                     }
-                    basicRoomsList.push(this.createRoom(value, action, roomStatuses));
+                    basicRoomsList.push(this.createRoom(value, action, randomRoomStatuses));
                     break;
                 case 'additional':
-                    additionalRoomsList.push(this.createRoom(value, action, roomStatuses));
+                    additionalRoomsList.push(this.createRoom(value, action, randomRoomStatuses));
                     break;
                 default:
                     throw new Error(`Unknown room type: ${value.roomType}`);
@@ -63,12 +63,10 @@ export class RoomsManager {
 
     static getShuffledRoomsForBoardSetting() {
         let {specialRoomsList, basicRoomsList, additionalRoomsList} = this.createRoomsList();
-        basicRoomsList = shuffle(basicRoomsList);
-        additionalRoomsList = shuffle(additionalRoomsList);
         return {
             specialRoomsList,
-            basicRoomsList,
-            additionalRoomsList
-        }
+            basicRoomsList: shuffle(basicRoomsList),
+            additionalRoomsList: shuffle(additionalRoomsList)
+        };
     }
 }
