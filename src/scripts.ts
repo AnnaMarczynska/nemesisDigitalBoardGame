@@ -1,28 +1,32 @@
 import {BoardManager} from './board/boardManager';
-import {Ripples} from './ripples';
+import {Movement} from './movement';
 
 const boardManager = new BoardManager();
-const ripples = new Ripples();
+const movement = new Movement();
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
     console.log('Game\'s map preparation... ⏳ ');
 
     console.log('Rooms setup... ⏳ ');
-    boardManager.setHexesBoard();
+    await boardManager.setRoomsBoard();
     console.log('Rooms assigned to hexes ✅ ');
 
     console.log('Corridors setup... ⏳ ');
-    boardManager.setCorridorsBoard();
+    await boardManager.setCorridorsBoard();
     console.log('Corridors data loaded ✅ ');
+
+    console.log('Placing characters on the board... ⏳ ');
+    await boardManager.setPlayersOnBoard();
+    console.log('Characters placed on the board ✅ ');
 
     console.log('Game setup complete. ✅ ');
 }
 
 async function ripplesTest() {
     console.log('Rolling ripple test... 🌊🌊🌊 ');
-    await ripples.ripplesRoll();
-    console.log('Ripples test complete. ✅ ');
+    await movement.ripplesRoll();
+    console.log('Movement test complete. ✅ ');
 }
 
 const scripts: { [key: string]: () => Promise<void> } = {
