@@ -1,11 +1,12 @@
 import { RoomsManager } from './rooms/roomsManager';
 import { BoardManager} from './board/boardManager';
-import {Ripples} from "./ripples";
+import {Movement} from "./movement";
 
 async function main() {
     const manager = new BoardManager();
-    const ripples = new Ripples();
+    const ripples = new Movement();
 
+    await manager.setPlayersOnBoard();
     await ripples.ripplesRoll();
 }
 

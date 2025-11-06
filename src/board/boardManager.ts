@@ -1,12 +1,13 @@
-import {hexesData} from '../dataStorage/hexesData';
-import {corridorsData} from '../dataStorage/corridorsData';
+import {hexesData} from '../../dataStorage/hexesData';
+import {corridorsData} from '../../dataStorage/corridorsData';
 import {Hex} from './hex';
 import {Corridor} from './corridor';
 import {RoomsManager} from '../rooms/roomsManager';
 import {Helpers} from '../helpers';
+import fs from "fs";
 
 export class BoardManager {
-    helpers = new Helpers();
+    helpers: Helpers = new Helpers();
 
     setHexesBoard() {
         const hexesBoard: Hex[] = [];
@@ -52,5 +53,56 @@ export class BoardManager {
         }
         await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
         return hexesBoard;
+    }
+
+    async setPlayersOnBoard() {
+        const charactersOnBoardPosition: any[] = [];
+        const numberOfPlayers = await this.helpers.setPlayersCount();
+        for (let i = 0; i < numberOfPlayers; i++) {
+            charactersOnBoardPosition.push({
+                players: `Player ${i + 1}`,
+                position: 6 });
+        }
+
+        return await this.helpers.saveBoardToFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
+    }
+
+    async getPlayersOnBoardPositions(): Promise< { players: string, position: number }[]> {
+        return await this.helpers.loadFile('charactersPositionOnBoard.json');
+    }
+
+    async getCurrentPlayerPosition() {
+        let allCharacterPosition = await this.getPlayersOnBoardPositions();
+        // to be changed later when game round order is implemented
+        let playersOrder = 2;
+        // type assertion to make filter works with availableRooms
+        let currentPlayerPosition = allCharacterPosition.find(p => p.players === `Player ${playersOrder}`)?.position!;
+        return {currentPlayerPosition, playersOrder};
+    }
+
+    async saveCharactersNewPosition(to: number) {
+        let newRoomPosition = to;
+        const { playersOrder } = await this.getCurrentPlayerPosition();
+        let allPlayersPositions = await this.getPlayersOnBoardPositions();
+
+        allPlayersPositions = allPlayersPositions.map(p => {
+            if (p.players === `Player ${playersOrder}`) {
+                return { ...p, position: newRoomPosition };
+            }
+            return p;
+        });
+        await this.helpers.saveBoardToFile(allPlayersPositions, 'charactersPositionOnBoard.json');
+    }
+
+    //function overloading
+    async getRequiredCorridors(corridors: Corridor[], type: 'connected', roomToLeave: number, roomToEnter?: number): Promise< Corridor | undefined>;
+    async getRequiredCorridors(corridors: Corridor[], type: 'all', roomToLeave: number): Promise<Corridor[]>;
+    async getRequiredCorridors(corridors: Corridor[], type: 'all' | 'connected', roomToLeave: number, roomToEnter?: number): Promise<Corridor[] | Corridor | undefined> {
+        switch (type) {
+            case 'all':
+                return corridors.filter(c => c.connectedRooms.includes(roomToLeave));
+            case 'connected':
+                return corridors.find(c => c.connectedRooms.includes(<number>roomToEnter) && c.connectedRooms.includes(roomToLeave));
+        }
     }
 }
