@@ -30,6 +30,7 @@ export class Movement {
                 console.log('Movement successful!');
                 // saving character new position
                 await this.boardManager.saveCharactersNewPosition(to);
+                await this.boardManager.roomDataRevealer(to);
             } else {
                 console.log('Nemesis appears in the room!');
                 testedCorridor!.areRipples = false;
@@ -38,6 +39,7 @@ export class Movement {
             console.log('Danger! Danger! Movement everywhere!');
             console.log('Movement successful!');
             await this.boardManager.saveCharactersNewPosition(to);
+            await this.boardManager.roomDataRevealer(to);
             // danger result adds ripples to all remaining corridors of the room to leave
             for (const corridor of allRoomToLeaveCorridors) {
                 corridor.areRipples = true;
@@ -45,6 +47,7 @@ export class Movement {
         } else {
             console.log('Silent move, no ripples made...');
             await this.boardManager.saveCharactersNewPosition(to);
+            await this.boardManager.roomDataRevealer(to);
         }
         // cannot be one of this.helpers consts as it cannot be destructured - taken out of an object and assigned to a standalone variable
         await this.helpers.saveBoardToFile(corridors, 'corridorsBoard.json');

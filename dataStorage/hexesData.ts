@@ -23,7 +23,7 @@ export const hexesData: Record<number, Hex> = {
     16: { type: 'basic', connectedRooms: [12, 15, 21], relatedCorridors: [18, 22, 28] },
     17: { type: 'basic', connectedRooms: [14, 19, 20], relatedCorridors: [20, 24, 25] },
     18: { type: 'basic', connectedRooms: [15, 20, 21], relatedCorridors: [21, 26, 27] },
-    19: { type: 'special', connectedRooms: [13, 17], relatedCorridors: [23, 24, 35] },
-    20: { type: 'special', connectedRooms: [17, 18], relatedCorridors: [25, 26] },
-    21: { type: 'special', connectedRooms: [16, 18], relatedCorridors: [27, 28, 36] },
+    19: { type: 'special', connectedRooms: [13, 17, 20], relatedCorridors: [23, 24, 35] },
+    20: { type: 'special', connectedRooms: [17, 18, 19, 20], relatedCorridors: [25, 26] },
+    21: { type: 'special', connectedRooms: [16, 18, 20], relatedCorridors: [27, 28, 36] },
 };
