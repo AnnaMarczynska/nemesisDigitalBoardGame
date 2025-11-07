@@ -1,14 +1,32 @@
 // interface created to keep type safety
+import {Helpers} from "../helpers";
+
 interface RoomActionMap {
     [key: string]: Record<string, (...args: any[]) => Promise<void>>;
 }
 
 export class RoomsSpecificActions implements RoomActionMap {
+    static helpers = new Helpers();
     [key: string]: Record<string, (...args: any[]) => Promise<void>>;
 
     static cockpitRoomActions = {
-        async checkCoordinates(){},
-        async changeCoordinates(){}
+        async setCoordinates(){
+            const shuffledCoordinatesSets = await RoomsSpecificActions.helpers.loadFile('coordinatesSets.json');
+            const gameCoordinates = shuffledCoordinatesSets[0];
+            const selectedDestination = gameCoordinates.B;
+            const gameCoordinatesData = { ...gameCoordinates, selectedDestination } // flatten data structure for easier access
+            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinatesData, 'gameCoordinates.json');
+        },
+        async checkCoordinates(){
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
+            console.log('Current coordinates are: ', gameCoordinates.selectedDestination);
+        },
+        async changeCoordinates(){
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
+            const newCoordinates = await RoomsSpecificActions.helpers.askQuestion('Choose new coordinates: ');
+            gameCoordinates.selectedDestination = gameCoordinates[newCoordinates];
+            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinates, 'gameCoordinates.json');
+        }
     }
 
     static engineRoomActions = {
