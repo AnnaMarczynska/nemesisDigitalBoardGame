@@ -1,8 +1,10 @@
 import {BoardManager} from './board/boardManager';
 import {Movement} from './movement';
+import {RoomsSpecificActions} from "./rooms/roomsSpecificActions";
 
 const boardManager = new BoardManager();
 const movement = new Movement();
+const coordinates = RoomsSpecificActions;
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
@@ -19,6 +21,10 @@ async function gameSetup() {
     console.log('Placing characters on the board... ⏳ ');
     await boardManager.setPlayersOnBoard();
     console.log('Characters placed on the board ✅ ');
+
+    console.log('Setting coordinates... ⏳ ');
+    await coordinates.cockpitRoomActions.setCoordinates();
+    console.log('Coordinates set ✅ ');
 
     console.log('Game setup complete. ✅ ');
 }

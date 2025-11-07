@@ -1,0 +1,50 @@
+[
+  {
+    "A": "Earth",
+    "B": "Mars",
+    "C": "Venus",
+    "D": "Outer space"
+  },
+  {
+    "A": "Outer space",
+    "B": "Earth",
+    "C": "Venus",
+    "D": "Mars"
+  },
+  {
+    "A": "Earth",
+    "B": "Outer space",
+    "C": "Mars",
+    "D": "Venus"
+  },
+  {
+    "A": "Mars",
+    "B": "Venus",
+    "C": "Outer space",
+    "D": "Earth"
+  },
+  {
+    "A": "Venus",
+    "B": "Earth",
+    "C": "Outer space",
+    "D": "Mars"
+  },
+  {
+    "A": "Mars",
+    "B": "Venus",
+    "C": "Earth",
+    "D": "Outer space"
+  },
+  {
+    "A": "Venus",
+    "B": "Outer space",
+    "C": "Mars",
+    "D": "Earth"
+  },
+  {
+    "A": "Outer space",
+    "B": "Mars",
+    "C": "Earth",
+    "D": "Venus"
+  }
+]
