@@ -31,7 +31,7 @@ export class RoomsManager {
             const actionKey = value.actionsKey as keyof typeof RoomsSpecificActions;
             const roomSpecificActions = RoomsSpecificActions[actionKey];
             const action = Object.keys(roomSpecificActions);
-            const randomRoomStatuses: RoomStatusesData[] = this.setRoomStatuses();
+            let randomRoomStatuses: RoomStatusesData[] = this.setRoomStatuses();
 
             switch (value.roomType) {
                 case 'special':
@@ -41,6 +41,7 @@ export class RoomsManager {
                             specialRoomsList.push(this.createRoom(roomCopy, action));
                         }
                     }
+                    randomRoomStatuses = [{ roomStatus: 'none', itemsCount: 0 }]; // as special rooms do not have statuses nor items
                     specialRoomsList.push(this.createRoom(value, action, randomRoomStatuses));
                     break;
                 case 'basic':
