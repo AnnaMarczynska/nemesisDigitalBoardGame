@@ -8,12 +8,16 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
 
 ### dataStorage folder
 
-    - roomsData.ts: data for all room types: room name, type, description, computer information
-    - hexesData.ts: data for all hex types: type, related rooms and related corridors data
+    - charactersPositionOnBoard.json: stores current positions of all characters on the board
+    - coordinatesSets.json: predefined sets of coordinates
+    - corridorsBoard.json: data for all corridors: areRipples, connectedRooms 
     - corridorsData.ts: data for corridor: if there are ripples, what values triggers ripples and info about connected rooms
-    - roomStatusData.ts: data for room statuses: statuses (slime, door, damaged, fire, silence, danger) and items count
-    - corridorsBoard.json: instance of corridors on the board used during game
+    - gameCoordinates.json: stores shuffled coordinates for particular game session
+    - hexesData.ts: data for all hex types: type, related rooms and related corridors data
+    - playersOnBoardPositions.json: stores order number of player who is taking ripple test
     - roomsBoard.json: instance of rooms on the board used during game
+    - roomsData.ts: data for all room types: room name, type, description, computer information
+    - roomStatusData.ts: data for room statuses: statuses (slime, door, damaged, fire, silence, danger) and items count
 
 ### rooms folder
 
