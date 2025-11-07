@@ -4,7 +4,24 @@ import {Hex} from './hex';
 import {Corridor} from './corridor';
 import {RoomsManager} from '../rooms/roomsManager';
 import {Helpers} from '../helpers';
-import fs from "fs";
+
+interface assignedRoom {
+    roomName: string;
+    roomType: 'normal' | 'special' | 'additional';
+    roomDescription: string;
+    isComputer: boolean;
+    roomActions: string[];
+    roomStatus: string;
+    itemsCount: number;
+}
+
+interface Room {
+    id: number;
+    type: 'special' | 'basic' | 'additional';
+    connectedRooms: number[];
+    relatedCorridors: number[];
+    assignedRoom: assignedRoom;
+}
 
 export class BoardManager {
     helpers: Helpers = new Helpers();
@@ -35,7 +52,7 @@ export class BoardManager {
         let additionalRoomIndex = 0;
 
         for (const [id, hex] of hexesBoard.entries()) {
-            if (hex.type === 'basic'){
+            if (hex.type === 'basic') {
                 hex.assignedRoom = roomsBoard.basicRoomsList[basicRoomIndex];
                 basicRoomIndex++;
             }
@@ -44,7 +61,7 @@ export class BoardManager {
                 additionalRoomIndex++;
             }
             if (hex.type === 'special') {
-                if (hex.id === 1)  hex.assignedRoom = roomsBoard.specialRoomsList[0];
+                if (hex.id === 1) hex.assignedRoom = roomsBoard.specialRoomsList[0];
                 if (hex.id === 11) hex.assignedRoom = roomsBoard.specialRoomsList[1];
                 if (hex.id === 19) hex.assignedRoom = roomsBoard.specialRoomsList[2];
                 if (hex.id === 20) hex.assignedRoom = roomsBoard.specialRoomsList[3];
@@ -61,13 +78,14 @@ export class BoardManager {
         for (let i = 0; i < numberOfPlayers; i++) {
             charactersOnBoardPosition.push({
                 players: `Player ${i + 1}`,
-                position: 6 });
+                position: 11
+            });
         }
 
         return await this.helpers.saveBoardToFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
     }
 
-    async getPlayersOnBoardPositions(): Promise< { players: string, position: number }[]> {
+    async getPlayersOnBoardPositions(): Promise<{ players: string, position: number }[]> {
         return await this.helpers.loadFile('charactersPositionOnBoard.json');
     }
 
@@ -82,12 +100,12 @@ export class BoardManager {
 
     async saveCharactersNewPosition(to: number) {
         let newRoomPosition = to;
-        const { playersOrder } = await this.getCurrentPlayerPosition();
+        const {playersOrder} = await this.getCurrentPlayerPosition();
         let allPlayersPositions = await this.getPlayersOnBoardPositions();
 
         allPlayersPositions = allPlayersPositions.map(p => {
             if (p.players === `Player ${playersOrder}`) {
-                return { ...p, position: newRoomPosition };
+                return {...p, position: newRoomPosition};
             }
             return p;
         });
@@ -95,7 +113,7 @@ export class BoardManager {
     }
 
     //function overloading
-    async getRequiredCorridors(corridors: Corridor[], type: 'connected', roomToLeave: number, roomToEnter?: number): Promise< Corridor | undefined>;
+    async getRequiredCorridors(corridors: Corridor[], type: 'connected', roomToLeave: number, roomToEnter?: number): Promise<Corridor | undefined>;
     async getRequiredCorridors(corridors: Corridor[], type: 'all', roomToLeave: number): Promise<Corridor[]>;
     async getRequiredCorridors(corridors: Corridor[], type: 'all' | 'connected', roomToLeave: number, roomToEnter?: number): Promise<Corridor[] | Corridor | undefined> {
         switch (type) {
@@ -104,5 +122,19 @@ export class BoardManager {
             case 'connected':
                 return corridors.find(c => c.connectedRooms.includes(<number>roomToEnter) && c.connectedRooms.includes(roomToLeave));
         }
+    }
+
+    async roomDataRevealer(hexId: number) {
+        const roomsBoard: Room[] = await this.helpers.loadFile('roomsBoard.json');
+        const enteredRoom: Room = roomsBoard.find(r => r.id === hexId)!; // as there will always be a room
+
+        console.log('You have entered ', enteredRoom.assignedRoom!.roomName);
+        console.log('Room status: ', enteredRoom.assignedRoom!.roomStatus);
+        console.log('Remaining items: ', enteredRoom.assignedRoom!.itemsCount);
+        await this.helpers.askQuestion('Do you want to see room description? (yes/no): ').then(async (answer) => {
+            if (answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'y') {
+                console.log(enteredRoom.assignedRoom!.roomDescription);
+            }
+        });
     }
 }
