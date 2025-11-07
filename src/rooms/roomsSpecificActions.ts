@@ -6,28 +6,26 @@ interface RoomActionMap {
 }
 
 export class RoomsSpecificActions implements RoomActionMap {
+    static helpers = new Helpers();
     [key: string]: Record<string, (...args: any[]) => Promise<void>>;
 
     static cockpitRoomActions = {
         async setCoordinates(){
-            const helpers: Helpers = new Helpers();
-            const shuffledCoordinatesSets = await helpers.loadFile('coordinatesSets.json');
+            const shuffledCoordinatesSets = await RoomsSpecificActions.helpers.loadFile('coordinatesSets.json');
             const gameCoordinates = shuffledCoordinatesSets[0];
             const selectedDestination = gameCoordinates.B;
             const gameCoordinatesData = { ...gameCoordinates, selectedDestination } // flatten data structure for easier access
-            await helpers.saveBoardToFile(gameCoordinatesData, 'gameCoordinates.json');
+            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinatesData, 'gameCoordinates.json');
         },
         async checkCoordinates(){
-            const helpers: Helpers = new Helpers();
-            const gameCoordinates = await helpers.loadFile('gameCoordinates.json');
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
             console.log('Current coordinates are: ', gameCoordinates.selectedDestination);
         },
         async changeCoordinates(){
-            const helpers: Helpers = new Helpers();
-            const gameCoordinates = await helpers.loadFile('gameCoordinates.json');
-            const newCoordinates = await helpers.askQuestion('Choose new coordinates: ');
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
+            const newCoordinates = await RoomsSpecificActions.helpers.askQuestion('Choose new coordinates: ');
             gameCoordinates.selectedDestination = gameCoordinates[newCoordinates];
-            await helpers.saveBoardToFile(gameCoordinates, 'gameCoordinates.json');
+            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinates, 'gameCoordinates.json');
         }
     }
 
