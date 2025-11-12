@@ -12,8 +12,12 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
     - coordinatesSets.json: predefined sets of coordinates
     - corridorsBoard.json: data for all corridors: areRipples, connectedRooms 
     - corridorsData.ts: data for corridor: if there are ripples, what values triggers ripples and info about connected rooms
+    - drawnNemesisWeaknesses.json: stores drawn nemesis weaknesses for particular game session
     - gameCoordinates.json: stores shuffled coordinates for particular game session
     - hexesData.ts: data for all hex types: type, related rooms and related corridors data
+    - nemesisBag.json: stores drawn nemesis tokens for particular game session
+    - nemesisTokens: all nemesis tokens data: type & danger level
+    - numberOfPlayers.json: stores number of players for particular game session
     - playersOnBoardPositions.json: stores order number of player who is taking ripple test
     - roomsBoard.json: instance of rooms on the board used during game
     - roomsData.ts: data for all room types: room name, type, description, computer information
@@ -36,6 +40,7 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
 
     - helpers.ts: helper functions used across the project like board saving/loading, easier data formatting
     - movement.ts: handles ripple test and ripple effects on corridors
+    - nemesis.ts: nemesis related data and actions such as nemesis drawing tokens, weaknesses, revealing nemesis
     - scripts.ts: scripts for maintaining game process
 
 ## Scripts

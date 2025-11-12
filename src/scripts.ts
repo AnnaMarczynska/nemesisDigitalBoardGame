@@ -1,10 +1,12 @@
 import {BoardManager} from './board/boardManager';
 import {Movement} from './movement';
 import {RoomsSpecificActions} from "./rooms/roomsSpecificActions";
+import {Nemesis} from "./nemesis";
 
 const boardManager = new BoardManager();
 const movement = new Movement();
 const coordinates = RoomsSpecificActions;
+const nemesis = new Nemesis();
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
@@ -18,13 +20,26 @@ async function gameSetup() {
     await boardManager.setCorridorsBoard();
     console.log('Corridors data loaded ✅ ');
 
+    console.log('Setting coordinates... ⏳ ');
+    await coordinates.cockpitRoomActions.setCoordinates();
+    console.log('Coordinates set ✅ ');
+
+    console.log('Setting number of players... ⏳ ');
+    await boardManager.setNumberOfPlayers();
+    console.log('Number of players set ✅ ');
+
     console.log('Placing characters on the board... ⏳ ');
     await boardManager.setPlayersOnBoard();
     console.log('Characters placed on the board ✅ ');
 
-    console.log('Setting coordinates... ⏳ ');
-    await coordinates.cockpitRoomActions.setCoordinates();
-    console.log('Coordinates set ✅ ');
+    console.log('Setting nemesis data... ⏳ ');
+    console.log('Setting nemesis bag... ⏳ ');
+    await nemesis.setNemesisBag();
+    console.log('Nemesis bag set ✅ ');
+    console.log('Assigning nemesis weaknesses... ⏳ ');
+    await nemesis.setNemesisWeaknesses();
+    console.log('Nemesis weaknesses assigned ✅ ');
+    console.log('Nemesis data setup complete ✅ ');
 
     console.log('Game setup complete. ✅ ');
 }
