@@ -32,7 +32,14 @@ async function gameSetup() {
     await boardManager.setPlayersOnBoard();
     console.log('Characters placed on the board ✅ ');
 
+    console.log('Setting nemesis data... ⏳ ');
+    console.log('Setting nemesis bag... ⏳ ');
     await nemesis.setNemesisBag();
+    console.log('Nemesis bag set ✅ ');
+    console.log('Assigning nemesis weaknesses... ⏳ ');
+    await nemesis.setNemesisWeaknesses();
+    console.log('Nemesis weaknesses assigned ✅ ');
+    console.log('Nemesis data setup complete ✅ ');
 
     console.log('Game setup complete. ✅ ');
 }

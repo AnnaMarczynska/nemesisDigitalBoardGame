@@ -51,4 +51,25 @@ export class Nemesis {
         await this.helpers.saveBoardToFile(nemesisBag, 'nemesisBag.json');
         return drawNemesis;
     }
+
+    async setNemesisWeaknesses() {
+        const weaknesses = await this.helpers.loadFile('nemesisWeaknesses.json');
+        const shuffledWeaknesses = shuffle(weaknesses);
+        const eggWeakness = shuffledWeaknesses[0];
+        const nemesisBodyWeakness = shuffledWeaknesses[1];
+        const crewMemberBodyWeakness = shuffledWeaknesses[2];
+
+        console.log('Egg Weakness:', eggWeakness);
+        console.log('Nemesis Body Weakness:', nemesisBodyWeakness);
+        console.log('Crew Member Body Weakness:', crewMemberBodyWeakness);
+
+        const assignedWeaknesses = {
+            eggWeakness,
+            nemesisBodyWeakness,
+            crewMemberBodyWeakness
+        };
+
+        await this.helpers.saveBoardToFile(assignedWeaknesses, 'drawnNemesisWeaknessesState.json');
+        return assignedWeaknesses;
+    }
 }
