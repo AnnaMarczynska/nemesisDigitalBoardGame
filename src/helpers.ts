@@ -5,8 +5,6 @@ import readline from 'readline';
 const DATA_PATH = path.resolve(process.cwd(), 'dataStorage');
 
 export class Helpers {
-    numberOfPlayers: number = 0;
-
     // Custom JSON stringify to keep arrays inline as the outer library solution doesn't work with scripts
     stringifyWithInlineArrays(obj: any, space = 2): string {
         return JSON.stringify(obj, (key, value) => value, space)
@@ -30,16 +28,6 @@ export class Helpers {
 
     async rollDice() {
         return Number(Math.floor(Math.random() * 6) + 1);
-    }
-
-    async setPlayersCount(): Promise<number> {
-        let numberOfPlayers = await this.askQuestion('Enter number of players (1-5): ');
-        if (isNaN(Number(numberOfPlayers)) || Number(numberOfPlayers) < 1 || Number(numberOfPlayers) > 5) {
-            console.log('Invalid number of players. Please enter a number between 1 and 5.');
-            return this.setPlayersCount(); // recursion
-        }
-        this.numberOfPlayers = Number(numberOfPlayers);
-        return this.numberOfPlayers;
     }
 
     async roomToEnterNumber(): Promise<number> {
@@ -71,5 +59,14 @@ export class Helpers {
                 resolve(response);
             })
         );
+    }
+
+    async getPlayersCount(): Promise<number> {
+        let numberOfPlayers = await this.askQuestion('Enter number of players (1-5): ');
+        if (isNaN(Number(numberOfPlayers)) || Number(numberOfPlayers) < 1 || Number(numberOfPlayers) > 5) {
+            console.log('Invalid number of players. Please enter a number between 1 and 5.');
+            return this.getPlayersCount(); // recursion
+        }
+        return Number(numberOfPlayers);
     }
 }

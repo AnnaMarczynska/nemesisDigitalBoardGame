@@ -1,10 +1,12 @@
 import {Helpers} from "./helpers";
 import {Corridor} from "./board/corridor";
 import {BoardManager} from "./board/boardManager";
+import {Nemesis} from "./nemesis";
 
 export class Movement {
     helpers: Helpers = new Helpers();
     boardManager = new BoardManager();
+    nemesis: Nemesis = new Nemesis();
 
     async ripplesRoll() {
         //avoids repeating this.helpers everywhere
@@ -16,6 +18,7 @@ export class Movement {
         let corridors: Corridor[] = await loadFile('corridorsBoard.json');
         const testedCorridor = await this.boardManager.getRequiredCorridors(corridors, 'connected', roomToLeave, roomToEnter);
         const allRoomToLeaveCorridors = await this.boardManager.getRequiredCorridors(corridors, 'all', roomToLeave);
+        let drawnNemesis = await this.nemesis.drawNemesis();
 
         //checking runtime errors, no corridor found between selected rooms
         if (!testedCorridor) {
@@ -33,6 +36,7 @@ export class Movement {
                 await this.boardManager.roomDataRevealer(to);
             } else {
                 console.log('Nemesis appears in the room!');
+                console.log('This is ' + drawnNemesis.type + ' with danger level ' + drawnNemesis.danger);
                 testedCorridor!.areRipples = false;
             }
         } else if (roll === 5) {

@@ -72,16 +72,24 @@ export class BoardManager {
         return hexesBoard;
     }
 
+    async setNumberOfPlayers() {
+        let input =  await this.helpers.askQuestion('Enter number of players (1-5): ');
+        if (isNaN(Number(input)) || Number(input) < 1 || Number(input) > 5) {
+            console.log('Invalid number of players. Please enter a number between 1 and 5.');
+        }
+        return await this.helpers.saveBoardToFile(input, 'numberOfPlayers.json');
+    }
+
     async setPlayersOnBoard() {
+        let numberOfPlayers = await this.helpers.loadFile('numberOfPlayers.json');
+        let playersCount = Number(numberOfPlayers);
         const charactersOnBoardPosition: any[] = [];
-        const numberOfPlayers = await this.helpers.setPlayersCount();
-        for (let i = 0; i < numberOfPlayers; i++) {
+        for (let i = 0; i < playersCount; i++) {
             charactersOnBoardPosition.push({
                 players: `Player ${i + 1}`,
                 position: 11
             });
         }
-
         return await this.helpers.saveBoardToFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
     }
 
