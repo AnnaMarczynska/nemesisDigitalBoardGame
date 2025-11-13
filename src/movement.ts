@@ -15,7 +15,7 @@ export class Movement {
         let roll: number = await rollDice();
         let roomToLeave = from;
         let roomToEnter = to;
-        let corridors: Corridor[] = await loadFile('corridorsBoard.json');
+        let corridors: Corridor[] = await loadFile('corridorsBoard.json', './dataStorage/board');
         const testedCorridor = await this.boardManager.getRequiredCorridors(corridors, 'connected', roomToLeave, roomToEnter);
         const allRoomToLeaveCorridors = await this.boardManager.getRequiredCorridors(corridors, 'all', roomToLeave);
         let drawnNemesis = await this.nemesis.drawNemesis();
@@ -54,12 +54,12 @@ export class Movement {
             await this.boardManager.roomDataRevealer(to);
         }
         // cannot be one of this.helpers consts as it cannot be destructured - taken out of an object and assigned to a standalone variable
-        await this.helpers.saveBoardToFile(corridors, 'corridorsBoard.json');
+        await this.helpers.saveBoardToFile(corridors, 'corridorsBoard.json', './dataStorage/board');
     }
 
     async moveToRoom() {
         const { currentPlayerPosition } = await this.boardManager.getCurrentPlayerPosition();
-        const boardMap = await this.helpers.loadFile('roomsBoard.json') as { id: number; connectedRooms: number[] }[];
+        const boardMap = await this.helpers.loadFile('roomsBoard.json', './dataStorage/board') as { id: number; connectedRooms: number[] }[];
         let roomToEnter: number;
 
         // find all rooms connected to the room to leave and make a new array of their ids (map)

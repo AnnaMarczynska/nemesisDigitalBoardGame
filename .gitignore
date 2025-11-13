@@ -10,10 +10,10 @@ yarn-error.log*
 
 .vscode/*
 .idea/notes.txt
-dataStorage/corridorsBoard.json
-dataStorage/roomsBoard.json
-dataStorage/charactersPositionOnBoard.json
+dataStorage/board/corridorsBoard.json
+dataStorage/board/roomsBoard.json
+dataStorage/board/charactersPositionOnBoard.json
 dataStorage/gameCoordinates.json
-dataStorage/nemesisBag.json
+dataStorage/nemesis/nemesisBag.json
 dataStorage/numberOfPlayers.json
-dataStorage/drawnNemesisWeaknessesState.json
+dataStorage/nemesis/drawnNemesisWeaknessesState.json

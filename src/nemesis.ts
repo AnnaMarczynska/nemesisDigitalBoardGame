@@ -5,7 +5,7 @@ export class Nemesis {
     helpers: Helpers = new Helpers();
 
     async setNemesisTokens() {
-        let nemesisTokens = await this.helpers.loadFile('nemesisTokens.json');
+        let nemesisTokens = await this.helpers.loadFile('nemesisTokens.json', 'nemesis');
 
         // prepare token lists
         let emptyToken = nemesisTokens.find((c: { type: string; }) => c.type === 'empty');
@@ -40,20 +40,20 @@ export class Nemesis {
         }
 
         nemesisBag = shuffle(nemesisBag);
-        await this.helpers.saveBoardToFile(nemesisBag, 'nemesisBag.json');
+        await this.helpers.saveBoardToFile(nemesisBag, 'nemesisBag.json', 'nemesis');
         return nemesisBag;
     }
 
     async drawNemesis() {
-        let nemesisBag = await this.helpers.loadFile('nemesisBag.json');
+        let nemesisBag = await this.helpers.loadFile('nemesisBag.json', 'nemesis');
         let drawNemesis = nemesisBag[0];
         nemesisBag.splice(0, 1);
-        await this.helpers.saveBoardToFile(nemesisBag, 'nemesisBag.json');
+        await this.helpers.saveBoardToFile(nemesisBag, 'nemesisBag.json', 'nemesis');
         return drawNemesis;
     }
 
     async setNemesisWeaknesses() {
-        const weaknesses = await this.helpers.loadFile('nemesisWeaknesses.json');
+        const weaknesses = await this.helpers.loadFile('nemesisWeaknesses.json', 'nemesis');
         const shuffledWeaknesses = shuffle(weaknesses);
         const eggWeakness = shuffledWeaknesses[0];
         const nemesisBodyWeakness = shuffledWeaknesses[1];
@@ -69,7 +69,7 @@ export class Nemesis {
             crewMemberBodyWeakness
         };
 
-        await this.helpers.saveBoardToFile(assignedWeaknesses, 'drawnNemesisWeaknessesState.json');
+        await this.helpers.saveBoardToFile(assignedWeaknesses, 'drawnNemesisWeaknessesState.json', 'nemesis');
         return assignedWeaknesses;
     }
 }

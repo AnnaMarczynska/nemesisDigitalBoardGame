@@ -1,4 +1,4 @@
-import {RoomsData} from '../../dataStorage/roomsData';
+import {RoomsData} from '../../dataStorage/board/roomsData';
 
 export interface Hex {
     id: number;

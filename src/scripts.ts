@@ -2,11 +2,13 @@ import {BoardManager} from './board/boardManager';
 import {Movement} from './movement';
 import {RoomsSpecificActions} from "./rooms/roomsSpecificActions";
 import {Nemesis} from "./nemesis";
+import {Characters} from "./characters";
 
 const boardManager = new BoardManager();
 const movement = new Movement();
 const coordinates = RoomsSpecificActions;
 const nemesis = new Nemesis();
+const characters = new Characters();
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
@@ -28,9 +30,9 @@ async function gameSetup() {
     await boardManager.setNumberOfPlayers();
     console.log('Number of players set ✅ ');
 
-    console.log('Placing characters on the board... ⏳ ');
+    console.log('Placing characters on the qboard... ⏳ ');
     await boardManager.setPlayersOnBoard();
-    console.log('Characters placed on the board ✅ ');
+    console.log('Characters placed on the qboard ✅ ');
 
     console.log('Setting nemesis data... ⏳ ');
     console.log('Setting nemesis bag... ⏳ ');
@@ -50,9 +52,15 @@ async function ripplesTest() {
     console.log('Movement test complete. ✅ ');
 }
 
+async function drawCharacterHands() {
+    console.log('Drawing character hands... 🃏🃏🃏 ');
+    await characters.drawHandCards();
+}
+
 const scripts: { [key: string]: () => Promise<void> } = {
     gameSetup,
-    ripplesTest
+    ripplesTest,
+    drawCharacterHands
 }
 
 const scriptName = process.argv[2];

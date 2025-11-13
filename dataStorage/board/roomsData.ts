@@ -1,4 +1,4 @@
-import {RoomsSpecificActions} from "../src/rooms/roomsSpecificActions";
+import {RoomsSpecificActions} from "../../src/rooms/roomsSpecificActions";
 
 // adding interface for data structure consistency and autocompletion support
 export interface RoomsData {
@@ -81,7 +81,7 @@ export const roomsData = {
         roomType: 'basic',
         roomDescription: 'This is communication room \n' +
             'Send a signal. \n ' +
-            'Put status marker on Set signal section of your board. \n ' +
+            'Put status marker on Set signal section of your qboard. \n ' +
             'Sending a signal is a requirement for some of the objective cards and doesn\'t have any other use in the game. \n\n',
         isComputer: true,
         actionsKey: 'communicationRoomActions',
@@ -92,7 +92,7 @@ export const roomsData = {
         roomDescription: 'This is decontamination room \n' +
             'Perform the Decontamination Procedure \n ' +
             'Scan all Contamination cards (from your hand, action deck, and discard pile). Remove all INFECTED cards. \n' +
-            'If there is a Larva on your character board, remove it. \n ' +
+            'If there is a Larva on your character qboard, remove it. \n ' +
             'After scanning, your character suffers 1 Light Wound and you automatically pass. Shuffle all your Action cards (including those in hand and in the discard pile) and form a new Action deck. \n' +
             'Note: After the decontamination procedure, you must always pass. Your hand remains empty until the start of the next round. \n\n',
         isComputer: false,
@@ -155,9 +155,9 @@ export const roomsData = {
         roomType: 'basic',
         roomDescription: 'This is nest \n' +
             'Take 1 Egg \n' +
-            'Take 1 egg from the Intruder board, then perform a noise roll. \n' +
-            'The eggs on the Intruder board represent the eggs located in the Nest. When a player takes (or destroys) an egg from the Nest, it is removed from the Intruder board. \n ' +
-            'Taking an egg from the Intruder board costs 2 actions, while picking up an egg token from the main board costs only 1 action. \n' +
+            'Take 1 egg from the Intruder qboard, then perform a noise roll. \n' +
+            'The eggs on the Intruder qboard represent the eggs located in the Nest. When a player takes (or destroys) an egg from the Nest, it is removed from the Intruder qboard. \n ' +
+            'Taking an egg from the Intruder qboard costs 2 actions, while picking up an egg token from the main qboard costs only 1 action. \n' +
             'When there are no eggs left in the Nest (all have been taken or destroyed), the Nest is considered destroyed. \n' +
             'Place 1 damage marker on the Nest tile – this symbolizes its destruction. \n' +
             'If there are eggs in a room on fire and no character is carrying them, destroy one of those eggs during the Event Phase, in the Fire Damage step. \n' +
@@ -221,8 +221,8 @@ export const roomsData = {
             'Time for a snack... \n' +
             'Heal 1 light wound. \n ' +
             'Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \n' +
-            'If at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n ' +
-            'If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n',
+            'If at least one of the scanned cards is INFECTED, place a Larva on your character qboard (do not remove the INFECTED card!). \n ' +
+            'If you already have a Larva figure on your qboard, your character dies. In that case, place 1 Creeper in this room. \n\n',
         isComputer: false,
         actionsKey: 'canteenRoomActions',
     },
@@ -261,10 +261,10 @@ export const roomsData = {
         roomType: 'additional',
         roomDescription: 'Those are showers \n' +
             'Take a shower \n' +
-            'If you have a Slime marker on your character board, discard it. \n ' +
+            'If you have a Slime marker on your character qboard, discard it. \n ' +
             'Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \n ' +
-            'If at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n ' +
-            'If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n',
+            'If at least one of the scanned cards is INFECTED, place a Larva on your character qboard (do not remove the INFECTED card!). \n ' +
+            'If you already have a Larva figure on your qboard, your character dies. In that case, place 1 Creeper in this room. \n\n',
         isComputer: false,
         actionsKey: 'showersRoomActions',
     },

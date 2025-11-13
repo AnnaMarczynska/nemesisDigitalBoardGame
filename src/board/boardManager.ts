@@ -1,5 +1,5 @@
-import {hexesData} from '../../dataStorage/hexesData';
-import {corridorsData} from '../../dataStorage/corridorsData';
+import {hexesData} from '../../dataStorage/board/hexesData';
+import {corridorsData} from '../../dataStorage/board/corridorsData';
 import {Hex} from './hex';
 import {Corridor} from './corridor';
 import {RoomsManager} from '../rooms/roomsManager';
@@ -41,7 +41,7 @@ export class BoardManager {
             const corridor = Corridor.createCorridor(Number(id), corridorData.areRipples, corridorData.ripplesValue, corridorData.connectedRooms);
             corridorsBoard.push(corridor);
         }
-        await this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json');
+        await this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json', 'board');
         return corridorsBoard;
     }
 
@@ -68,7 +68,7 @@ export class BoardManager {
                 if (hex.id === 21) hex.assignedRoom = roomsBoard.specialRoomsList[4];
             }
         }
-        await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
+        await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json', 'board');
         return hexesBoard;
     }
 
@@ -133,7 +133,7 @@ export class BoardManager {
     }
 
     async roomDataRevealer(hexId: number) {
-        const roomsBoard: Room[] = await this.helpers.loadFile('roomsBoard.json');
+        const roomsBoard: Room[] = await this.helpers.loadFile('roomsBoard.json', 'board');
         const enteredRoom: Room = roomsBoard.find(r => r.id === hexId)!; // as there will always be a room
 
         console.log('You have entered ', enteredRoom.assignedRoom!.roomName);

@@ -1,4 +1,4 @@
-import {roomStatusesData} from "../../dataStorage/roomStatusesData";
+import {roomStatusesData} from "../../dataStorage/board/roomStatusesData";
 
 export class BaseRoom {
     //using parameter properties to reduce boilerplate code

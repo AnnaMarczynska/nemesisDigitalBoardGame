@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
 
-const DATA_PATH = path.resolve(process.cwd(), 'dataStorage');
+const DATA_PATH = path.join(process.cwd(), 'dataStorage');
 
 export class Helpers {
     // Custom JSON stringify to keep arrays inline as the outer library solution doesn't work with scripts
@@ -15,13 +15,16 @@ export class Helpers {
             });
     }
 
-    async saveBoardToFile(data: any, fileName: string) {
-        const filePath = path.join(DATA_PATH, fileName);
+    async saveBoardToFile(data: any, fileName: string, folderPath?: string) {
+        const targetDir = folderPath ? path.join(DATA_PATH, folderPath) : DATA_PATH;
+        const filePath = path.join(targetDir, fileName);
+        await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
         await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
     }
 
-    async loadFile(fileName: string) {
-        const filePath = path.join(DATA_PATH, fileName);
+    async loadFile(fileName: string, folderPath?: string) {
+        const targetDir = folderPath ? path.join(DATA_PATH, folderPath) : DATA_PATH;
+        const filePath = path.join(targetDir, fileName);
         const data = await fs.promises.readFile(filePath, 'utf-8');
         return JSON.parse(data);
     }
