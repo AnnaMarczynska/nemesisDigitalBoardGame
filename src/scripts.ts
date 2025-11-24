@@ -34,6 +34,9 @@ async function gameSetup() {
     await boardManager.setPlayersOnBoard();
     console.log('Characters placed on the qboard ✅ ');
 
+    console.log('Creating characters decks... ⏳ ');
+    await characters.setDecks();
+
     console.log('Setting nemesis data... ⏳ ');
     console.log('Setting nemesis bag... ⏳ ');
     await nemesis.setNemesisBag();
@@ -52,7 +55,7 @@ async function ripplesTest() {
     console.log('Movement test complete. ✅ ');
 }
 
-async function drawCharacterHands() {
+async function drawCharacterHand() {
     console.log('Drawing character hands... 🃏🃏🃏 ');
     await characters.drawHandCards();
 }
@@ -60,7 +63,7 @@ async function drawCharacterHands() {
 const scripts: { [key: string]: () => Promise<void> } = {
     gameSetup,
     ripplesTest,
-    drawCharacterHands
+    drawCharacterHand
 }
 
 const scriptName = process.argv[2];

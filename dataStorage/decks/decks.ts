@@ -1,3 +1,7 @@
+export type DecksType = {
+    [key: string]: { title: string; actionCost: number; description: string }[];
+};
+
 export const Decks: { [key: string]: { title: string; actionCost: number; description: string }[] } = {
     captainDeck: [
         { title: 'Search', actionCost: 1, description: 'Draw 2 cards from the Item deck of this room’s color.' },
