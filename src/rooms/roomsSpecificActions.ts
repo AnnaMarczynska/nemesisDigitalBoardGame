@@ -11,21 +11,21 @@ export class RoomsSpecificActions implements RoomActionMap {
 
     static cockpitRoomActions = {
         async setCoordinates(){
-            const shuffledCoordinatesSets = await RoomsSpecificActions.helpers.loadFile('coordinatesSets.json');
+            const shuffledCoordinatesSets = await RoomsSpecificActions.helpers.loadFile('coordinatesSets.json', 'coordinates');
             const gameCoordinates = shuffledCoordinatesSets[0];
             const selectedDestination = gameCoordinates.B;
             const gameCoordinatesData = { ...gameCoordinates, selectedDestination } // flatten data structure for easier access
-            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinatesData, 'gameCoordinates.json');
+            await RoomsSpecificActions.helpers.saveFile(gameCoordinatesData, 'gameCoordinates.json', 'coordinates');
         },
         async checkCoordinates(){
-            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json', 'coordinates');
             console.log('Current coordinates are: ', gameCoordinates.selectedDestination);
         },
         async changeCoordinates(){
-            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json');
+            const gameCoordinates = await RoomsSpecificActions.helpers.loadFile('gameCoordinates.json', 'coordinates');
             const newCoordinates = await RoomsSpecificActions.helpers.askQuestion('Choose new coordinates: ');
             gameCoordinates.selectedDestination = gameCoordinates[newCoordinates];
-            await RoomsSpecificActions.helpers.saveBoardToFile(gameCoordinates, 'gameCoordinates.json');
+            await RoomsSpecificActions.helpers.saveFile(gameCoordinates, 'gameCoordinates.json', 'coordinates');
         }
     }
 

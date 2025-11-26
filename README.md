@@ -7,21 +7,25 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
 ## Project Structure
 
 ### dataStorage folder
-
+- board folder
     - charactersPositionOnBoard.json: stores current positions of all characters on the board
-    - coordinatesSets.json: predefined sets of coordinates
     - corridorsBoard.json: data for all corridors: areRipples, connectedRooms 
-    - corridorsData.ts: data for corridor: if there are ripples, what values triggers ripples and info about connected rooms
+    - currentPlayerNumber.json: stores order number of a player who is taking ripple test
+    - numberOfPlayers.json: stores the number of players for a particular game session
+    - roomsBoard.json: instance of rooms on the board used during game
+- coordinates folder
+    - coordinatesSets.json: predefined sets of coordinates
+    - gameCoordinates.json: stores coordinates set drawn for a particular game session
+- decks folder
+- nemesis folder
     - drawnNemesisWeaknesses.json: stores drawn nemesis weaknesses for particular game session
-    - gameCoordinates.json: stores shuffled coordinates for particular game session
-    - hexesData.ts: data for all hex types: type, related rooms and related corridors data
     - nemesisBag.json: stores drawn nemesis tokens for particular game session
     - nemesisTokens: all nemesis tokens data: type & danger level
-    - numberOfPlayers.json: stores number of players for particular game session
-    - playersOnBoardPositions.json: stores order number of player who is taking ripple test
-    - roomsBoard.json: instance of rooms on the board used during game
-    - roomsData.ts: data for all room types: room name, type, description, computer information
-    - roomStatusData.ts: data for room statuses: statuses (slime, door, damaged, fire, silence, danger) and items count
+    - nemesisWeaknesses: all nemesis weaknesses data
+- corridorsData.ts: data for a corridor: if there are ripples, what values triggers ripples and info about connected rooms
+- hexesData.ts: data for all hex types: type, related rooms and related corridors data
+- roomsData.ts: data for all room types: room name, type, description, computer information
+- roomStatusData.ts: data for room statuses: statuses (slime, door, damaged, fire, silence, danger) and items count
 
 ### rooms folder
 
@@ -46,4 +50,5 @@ Factory Pattern is used for rooms-, corridors- and hexes-specific data.
 ## Scripts
 
 - npx ts-node src/scripts.ts gameSetup - Sets up a new game session
+- npx ts-node src/scripts.ts afterGameCleanUp - Cleans up data after game session ends
 - npx ts-node src/scripts.ts ripplesTest - Performs a movement attempt of player's character including ripple test

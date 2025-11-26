@@ -13,7 +13,7 @@ export class Characters {
             console.log('Invalid characterID selection. Please select a number between 1 and 6.');
             return this.selectCharacter(); // recursion
         }
-        await this.helpers.saveBoardToFile(characters[Number(characterID) - 1], 'activePlayer.json', 'board');
+        await this.helpers.saveFile(characters[Number(characterID) - 1], 'activePlayer.json', 'board');
     }
 
     async setDecks() {
@@ -33,8 +33,8 @@ export class Characters {
             let deckName = character + 'Deck';
             let allCards = shuffle(Decks[deckName]);
             let cardsToDrawnDeck: DecksType[] = [];
-            await this.helpers.saveBoardToFile(allCards, `${character}CardsToDrawnDeck.json`, 'decks');
-            await this.helpers.saveBoardToFile(cardsToDrawnDeck, `${character}HandCards.json`, 'decks');
+            await this.helpers.saveFile(allCards, `${character}CardsToDrawnDeck.json`, 'decks');
+            await this.helpers.saveFile(cardsToDrawnDeck, `${character}HandCards.json`, 'decks');
         }
     }
 
@@ -59,8 +59,8 @@ export class Characters {
         console.log('cardsToDrawnDeck', cardsToDrawnDeck.map((card: Card) => card.title));
         console.log('handCards', handCards.map((card: Card) => card.title));
         await this.selectCardToPlay();
-        await this.helpers.saveBoardToFile(handCards, `${character}HandCards.json`, 'decks');
-        await this.helpers.saveBoardToFile(cardsToDrawnDeck, `${character}CardsToDrawnDeck.json`, 'decks')
+        await this.helpers.saveFile(handCards, `${character}HandCards.json`, 'decks');
+        await this.helpers.saveFile(cardsToDrawnDeck, `${character}CardsToDrawnDeck.json`, 'decks')
     }
 
     async selectCardToPlay(): Promise<void> {
@@ -80,7 +80,7 @@ export class Characters {
         console.log(`You have selected to play: ${selectedCard.title} - ${selectedCard.description}`);
         handCards.splice(cardNumber, 1);
         cardsToDrawnDeck.push(selectedCard); // put played card to the bottom of the deck
-        await this.helpers.saveBoardToFile(handCards, `${character}HandCards.json`, 'decks');
-        await this.helpers.saveBoardToFile(cardsToDrawnDeck, `${character}CardsToDrawnDeck.json`, 'decks');
+        await this.helpers.saveFile(handCards, `${character}HandCards.json`, 'decks');
+        await this.helpers.saveFile(cardsToDrawnDeck, `${character}CardsToDrawnDeck.json`, 'decks');
     }
 }

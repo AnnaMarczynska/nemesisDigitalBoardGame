@@ -6,9 +6,12 @@
   {
     "players": "Player 2",
     "position": 11
+<<<<<<< HEAD
   },
   {
     "players": "Player 3",
     "position": 11
+=======
+>>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
   }
 ]
