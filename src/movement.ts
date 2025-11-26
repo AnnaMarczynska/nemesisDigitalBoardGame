@@ -15,11 +15,7 @@ export class Movement {
         let roll: number = await rollDice();
         let roomToLeave = from;
         let roomToEnter = to;
-<<<<<<< HEAD
-        let corridors: Corridor[] = await loadFile('corridorsBoard.json', './dataStorage/board');
-=======
         let corridors: Corridor[] = await loadFile('corridorsBoard.json', 'board');
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
         const testedCorridor = await this.boardManager.getRequiredCorridors(corridors, 'connected', roomToLeave, roomToEnter);
         const allRoomToLeaveCorridors = await this.boardManager.getRequiredCorridors(corridors, 'all', roomToLeave);
         let drawnNemesis = await this.nemesis.drawNemesis();
@@ -58,20 +54,12 @@ export class Movement {
             await this.boardManager.roomDataRevealer(to);
         }
         // cannot be one of this.helpers consts as it cannot be destructured - taken out of an object and assigned to a standalone variable
-<<<<<<< HEAD
-        await this.helpers.saveFile(corridors, 'corridorsBoard.json', './dataStorage/board');
-=======
         await this.helpers.saveFile(corridors, 'corridorsBoard.json', 'board');
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
     }
 
     async moveToRoom() {
         const { currentPlayerPosition } = await this.boardManager.getCurrentPlayerPosition();
-<<<<<<< HEAD
-        const boardMap = await this.helpers.loadFile('roomsBoard.json', './dataStorage/board') as { id: number; connectedRooms: number[] }[];
-=======
         const boardMap = await this.helpers.loadFile('roomsBoard.json', 'board') as { id: number; connectedRooms: number[] }[];
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
         let roomToEnter: number;
 
         // find all rooms connected to the room to leave and make a new array of their ids (map)

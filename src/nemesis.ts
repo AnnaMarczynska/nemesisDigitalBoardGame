@@ -40,11 +40,7 @@ export class Nemesis {
         }
 
         nemesisBag = shuffle(nemesisBag);
-<<<<<<< HEAD
         await this.helpers.saveFile(nemesisBag, 'nemesisBag.json', 'nemesis');
-=======
-        await this.helpers.saveFile(nemesisBag, 'nemesisBag.json', 'nemesis');
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
         return nemesisBag;
     }
 
@@ -52,11 +48,7 @@ export class Nemesis {
         let nemesisBag = await this.helpers.loadFile('nemesisBag.json', 'nemesis');
         let drawNemesis = nemesisBag[0];
         nemesisBag.splice(0, 1);
-<<<<<<< HEAD
         await this.helpers.saveFile(nemesisBag, 'nemesisBag.json', 'nemesis');
-=======
-        await this.helpers.saveFile(nemesisBag, 'nemesisBag.json', 'nemesis');
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
         return drawNemesis;
     }
 
@@ -77,11 +69,7 @@ export class Nemesis {
             crewMemberBodyWeakness
         };
 
-<<<<<<< HEAD
-        await this.helpers.saveFile(assignedWeaknesses, 'drawnNemesisWeaknessesState.json', 'nemesis');
-=======
         await this.helpers.saveFile(assignedWeaknesses, 'drawnNemesisWeaknesses.json', 'nemesis');
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
         return assignedWeaknesses;
     }
 }

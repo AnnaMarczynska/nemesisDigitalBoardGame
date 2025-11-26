@@ -68,13 +68,9 @@ async function drawCharacterHand() {
 
 const scripts: { [key: string]: () => Promise<void> } = {
     gameSetup,
-<<<<<<< HEAD
+    afterGameCleanup,
     ripplesTest,
     drawCharacterHand
-=======
-    afterGameCleanup,
-    ripplesTest
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e
 }
 
 const scriptName = process.argv[2];
