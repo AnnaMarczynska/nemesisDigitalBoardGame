@@ -12,8 +12,8 @@ yarn-error.log*
 .idea/notes.txt
 dataStorage/corridorsBoard.json
 dataStorage/roomsBoard.json
-dataStorage/charactersPositionOnBoard.json
-dataStorage/gameCoordinates.json
+dataStorage/board/charactersPositionOnBoard.json
+dataStorage/coordinates/gameCoordinates.json
 dataStorage/nemesisBag.json
-dataStorage/numberOfPlayers.json
+dataStorage/board/numberOfPlayers.json
 dataStorage/drawnNemesisWeaknessesState.json

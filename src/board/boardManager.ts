@@ -41,7 +41,7 @@ export class BoardManager {
             const corridor = Corridor.createCorridor(Number(id), corridorData.areRipples, corridorData.ripplesValue, corridorData.connectedRooms);
             corridorsBoard.push(corridor);
         }
-        await this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json');
+        await this.helpers.saveFile(corridorsBoard, 'corridorsBoard.json', 'board');
         return corridorsBoard;
     }
 
@@ -68,20 +68,20 @@ export class BoardManager {
                 if (hex.id === 21) hex.assignedRoom = roomsBoard.specialRoomsList[4];
             }
         }
-        await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
+        await this.helpers.saveFile(hexesBoard, 'roomsBoard.json', 'board');
         return hexesBoard;
     }
 
     async setNumberOfPlayers() {
-        let input =  await this.helpers.askQuestion('Enter number of players (1-5): ');
+        let input = await this.helpers.askQuestion('Enter number of players (1-5): ');
         if (isNaN(Number(input)) || Number(input) < 1 || Number(input) > 5) {
             console.log('Invalid number of players. Please enter a number between 1 and 5.');
         }
-        return await this.helpers.saveBoardToFile(input, 'numberOfPlayers.json');
+        return await this.helpers.saveFile(input, 'numberOfPlayers.json', 'board');
     }
 
     async setPlayersOnBoard() {
-        let numberOfPlayers = await this.helpers.loadFile('numberOfPlayers.json');
+        let numberOfPlayers = await this.helpers.loadFile('numberOfPlayers.json', 'board');
         let playersCount = Number(numberOfPlayers);
         const charactersOnBoardPosition: any[] = [];
         for (let i = 0; i < playersCount; i++) {
@@ -90,11 +90,11 @@ export class BoardManager {
                 position: 11
             });
         }
-        return await this.helpers.saveBoardToFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
+        return await this.helpers.saveFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json', 'board');
     }
 
     async getPlayersOnBoardPositions(): Promise<{ players: string, position: number }[]> {
-        return await this.helpers.loadFile('charactersPositionOnBoard.json');
+        return await this.helpers.loadFile('charactersPositionOnBoard.json', 'board');
     }
 
     async getCurrentPlayerPosition() {
@@ -117,7 +117,7 @@ export class BoardManager {
             }
             return p;
         });
-        await this.helpers.saveBoardToFile(allPlayersPositions, 'charactersPositionOnBoard.json');
+        await this.helpers.saveFile(allPlayersPositions, 'charactersPositionOnBoard.json', 'board');
     }
 
     //function overloading
@@ -133,7 +133,7 @@ export class BoardManager {
     }
 
     async roomDataRevealer(hexId: number) {
-        const roomsBoard: Room[] = await this.helpers.loadFile('roomsBoard.json');
+        const roomsBoard: Room[] = await this.helpers.loadFile('roomsBoard.json', 'board');
         const enteredRoom: Room = roomsBoard.find(r => r.id === hexId)!; // as there will always be a room
 
         console.log('You have entered ', enteredRoom.assignedRoom!.roomName);
@@ -144,5 +144,25 @@ export class BoardManager {
                 console.log(enteredRoom.assignedRoom!.roomDescription);
             }
         });
+    }
+
+    async afterGameCleanUp() {
+        let filesToClean = ['roomsBoard.json', 'CaptainCardsToDrawnDeck.json', 'CaptainHandsCards.json', 'MechanicCardsToDrawnDeck.json', 'MechanicHandCards.json',
+            'charactersPositionOnBoard.json', 'gameCoordinates.json', 'drawnNemesisWeaknesses.json', 'nemesisBag.json', 'numberOfPlayers.json', 'currentPlayerNumber.json'];
+        for (let file of filesToClean) {
+            if (file) {
+                if (file.includes('Board') || file.includes('numberOfPlayers')) {
+                    await this.helpers.saveFile([], file, 'board');
+                } else if (file.includes('coordinates') || file.includes('Coordinates')) {
+                    await this.helpers.saveFile([], file, 'coordinates');
+                } else if (file.includes('Cards')) {
+                    await this.helpers.saveFile([], file, 'decks');
+                } else if ((file.includes('nemesis') || file.includes('Nemesis'))) {
+                    await this.helpers.saveFile([], file, 'nemesis');
+                } else {
+                    await this.helpers.saveFile([], file);
+                }
+            }
+        }
     }
 }

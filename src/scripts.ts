@@ -44,6 +44,12 @@ async function gameSetup() {
     console.log('Game setup complete. ✅ ');
 }
 
+async function afterGameCleanup() {
+    console.log('After game cleanup in progress... 🧹🧹🧹 ');
+    await boardManager.afterGameCleanUp();
+    console.log('Cleanup complete. ✅ ');
+}
+
 async function ripplesTest() {
     console.log('Rolling ripple test... 🌊🌊🌊 ');
     await movement.ripplesRoll();
@@ -52,6 +58,7 @@ async function ripplesTest() {
 
 const scripts: { [key: string]: () => Promise<void> } = {
     gameSetup,
+    afterGameCleanup,
     ripplesTest
 }
 
