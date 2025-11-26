@@ -39,16 +39,15 @@
       29
     ],
     "assignedRoom": {
-      "roomName": "Generator",
+      "roomName": "Treatment room",
       "roomType": "basic",
-      "roomDescription": "This is generator room \nStart/Stop the Ship's Self - Destruct Countdown \n Place 1 status marker on the 1st (green) space of the self-destruct track, if there is no marker there. \nFrom now on, each time you move the time marker on the time track, also move the self-destruct marker 1 space forward. \nIf a character stops the self-destruct countdown, remove the marker from the track. (It will return to the 1st green space when the countdown is reinitiated.) \nWhen the marker reaches the 1st yellow space on the self-destruct track, the countdown can no longer be stopped. All escape pods automatically open (but can still be closed). \nWhen the marker reaches the last space on the track (with the skull symbol), the ship explodes. \nNote: The self-destruct countdown cannot be started if any character is already hibernated. \nIf jump takes place while the self-destruct countdown is active, the ship explodes. \n\n",
-      "isComputer": true,
+      "roomDescription": "This is treatment room \nHeal your wounds. \nBandage all of your severe injuries OR heal one bandaged severe injury OR bandage all of your shallow injuries \n\n",
+      "isComputer": false,
       "roomActions": [
-        "startCountdown",
-        "stopCountdown"
+        "treatInjury"
       ],
-      "roomStatus": "damaged",
-      "itemsCount": 2
+      "roomStatus": "door",
+      "itemsCount": 1
     }
   },
   {
@@ -63,12 +62,12 @@
       4
     ],
     "assignedRoom": {
-      "roomName": "Evacuation sector",
+      "roomName": "Fire control center",
       "roomType": "basic",
-      "roomDescription": "This is evacuation sector \nTry to access emergency capsule. \nYou can only attempt this action if any of sector's capsule is opened and has at least one available slot. \n Make a Ripple roll. If any Nemesis appears in room, your attempt will fail. \n After Ripple roll examination, if no Nemesis appears, you can put your character in one of opened capsules in sector, if at least one empty slot is available. \nEach capsule contains two slots, therefore it can accommodate up to two characters. \nCheck \"Emergency capsules\" frame at the end of this chapter to obtain information what happens once character enters emergency capsule. \nCharacter cannot enter emergency capsule if any Nemesis is present in the room. \n\n",
-      "isComputer": false,
+      "roomDescription": "This is fire control center \nInitiate the fire control procedure \n Choose any room.\nRemove the fire token from that room (if there is one). \n All intruders flee from that room (in random directions determined by drawing Event cards – 1 card per intruder). \nTip: You can use the fire control procedure even if there is no fire in the chosen room, in order to drive away intruders located there. \n\n",
+      "isComputer": true,
       "roomActions": [
-        "attemptEvacuation"
+        "putOutFire"
       ],
       "roomStatus": "fire",
       "itemsCount": 4
@@ -87,16 +86,15 @@
       30
     ],
     "assignedRoom": {
-      "roomName": "Decontamination room",
+      "roomName": "Storage",
       "roomType": "basic",
-      "roomDescription": "This is decontamination room \nPerform the Decontamination Procedure \n Scan all Contamination cards (from your hand, action deck, and discard pile). Remove all INFECTED cards. \nIf there is a Larva on your character qboard, remove it. \n After scanning, your character suffers 1 Light Wound and you automatically pass. Shuffle all your Action cards (including those in hand and in the discard pile) and form a new Action deck. \nNote: After the decontamination procedure, you must always pass. Your hand remains empty until the start of the next round. \n\n",
+      "roomDescription": "This is storage \nSearch for an Item \nDraw 2 cards from the item deck of any color (red, yellow, or blue). \n\n",
       "isComputer": false,
       "roomActions": [
-        "scanContaminationCards",
-        "removeLarva"
+        "searchStorage"
       ],
-      "roomStatus": "danger",
-      "itemsCount": 3
+      "roomStatus": "slime",
+      "itemsCount": 4
     }
   },
   {
@@ -112,15 +110,15 @@
       31
     ],
     "assignedRoom": {
-      "roomName": "Treatment room",
+      "roomName": "Laboratory",
       "roomType": "basic",
-      "roomDescription": "This is treatment room \nHeal your wounds. \nBandage all of your severe injuries OR heal one bandaged severe injury OR bandage all of your shallow injuries \n\n",
-      "isComputer": false,
+      "roomDescription": "This is laboratory \nExamine 1 Object \nThis action can only be performed if the room contains (even if carried by a character) one of the following objects: a crew member’s body, an intruder carcass, or an intruder egg. \n Reveal 1 intruder weakness card related to the object. \nThe object is not discarded after the examination is completed. However, the player may drop it without spending an action. \n\n",
+      "isComputer": true,
       "roomActions": [
-        "treatInjury"
+        "examineObject"
       ],
-      "roomStatus": "door",
-      "itemsCount": 1
+      "roomStatus": "damaged",
+      "itemsCount": 2
     }
   },
   {
@@ -139,14 +137,14 @@
       11
     ],
     "assignedRoom": {
-      "roomName": "Surveillance room",
+      "roomName": "Slime covered room",
       "roomType": "additional",
-      "roomDescription": "This is surveillance room \nPeek at 1 Room and its Exploration Token \nPeek at 1 unexplored room and the exploration token placed on it, without showing them to the other players. \nAfter looking, return them to their place. \n You may, but don’t have to, tell the truth about what you saw. \n\n",
-      "isComputer": true,
+      "roomDescription": "This is slime covered room \nYou've been slimmed!\nWhen you enter this room, you automatically gain a Slime marker. \n\n",
+      "isComputer": false,
       "roomActions": [
-        "checkRoom"
+        "getCovered"
       ],
-      "roomStatus": "fire",
+      "roomStatus": "silence",
       "itemsCount": 2
     }
   },
@@ -164,14 +162,14 @@
       8
     ],
     "assignedRoom": {
-      "roomName": "Slime covered room",
+      "roomName": "Showers",
       "roomType": "additional",
-      "roomDescription": "This is slime covered room \nYou've been slimmed!\nWhen you enter this room, you automatically gain a Slime marker. \n\n",
+      "roomDescription": "Those are showers \nTake a shower \nIf you have a Slime marker on your character board, discard it. \n Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \n If at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n",
       "isComputer": false,
       "roomActions": [
-        "getCovered"
+        "takeShower"
       ],
-      "roomStatus": "fire",
+      "roomStatus": "damaged",
       "itemsCount": 2
     }
   },
@@ -190,15 +188,16 @@
       12
     ],
     "assignedRoom": {
-      "roomName": "Armory",
+      "roomName": "Nest",
       "roomType": "basic",
-      "roomDescription": "This is armory \nCharge your energetic weapon. \n Add 2 cartridges to one of your energetic weapon. \n Attention! This room doesn't allow to charge classical weapon. \n Attention! Cartridge marker count on weapon's card cannot exceed maximum magazine capacity \n\n",
+      "roomDescription": "This is nest \nTake 1 Egg \nTake 1 egg from the Intruder board, then perform a noise roll. \nThe eggs on the Intruder board represent the eggs located in the Nest. When a player takes (or destroys) an egg from the Nest, it is removed from the Intruder board. \n Taking an egg from the Intruder board costs 2 actions, while picking up an egg token from the main board costs only 1 action. \nWhen there are no eggs left in the Nest (all have been taken or destroyed), the Nest is considered destroyed. \nPlace 1 damage marker on the Nest tile – this symbolizes its destruction. \nIf there are eggs in a room on fire and no character is carrying them, destroy one of those eggs during the Event Phase, in the Fire Damage step. \nNote! Remember that an egg is a Heavy Object. \nNote! You cannot perform a Search action in the Nest. \nDestroy 1 Egg \n When your character is in a room that contains eggs not being carried by anyone, you may attempt to destroy them. Eggs can be destroyed using a Shooting or Melee action. Each point of damage (of any type) destroys 1 egg. \nIf the character misses during a melee attack, they do not draw a Contamination card or suffer a Serious Wound. \nYou can also throw a grenade into a room containing uncarried eggs, just like when intruders are present in the room. A grenade destroys 2 eggs. A Molotov cocktail destroys 1 egg. \nAfter each individual attempt to destroy an egg, you must perform a Noise roll. \n\n",
       "isComputer": false,
       "roomActions": [
-        "reloadWeapon"
+        "destroyNest",
+        "takeEgg"
       ],
-      "roomStatus": "damaged",
-      "itemsCount": 1
+      "roomStatus": "danger",
+      "itemsCount": 3
     }
   },
   {
@@ -214,14 +213,14 @@
       32
     ],
     "assignedRoom": {
-      "roomName": "Fire control center",
+      "roomName": "Communication room",
       "roomType": "basic",
-      "roomDescription": "This is fire control center \nInitiate the fire control procedure \n Choose any room.\nRemove the fire token from that room (if there is one). \n All intruders flee from that room (in random directions determined by drawing Event cards – 1 card per intruder). \nTip: You can use the fire control procedure even if there is no fire in the chosen room, in order to drive away intruders located there. \n\n",
+      "roomDescription": "This is communication room \nSend a signal. \n Put status marker on Set signal section of your board. \n Sending a signal is a requirement for some of the objective cards and doesn't have any other use in the game. \n\n",
       "isComputer": true,
       "roomActions": [
-        "putOutFire"
+        "sendSignal"
       ],
-      "roomStatus": "damaged",
+      "roomStatus": "silence",
       "itemsCount": 2
     }
   },
@@ -237,15 +236,16 @@
       15
     ],
     "assignedRoom": {
-      "roomName": "Communication room",
+      "roomName": "Generator",
       "roomType": "basic",
-      "roomDescription": "This is communication room \nSend a signal. \n Put status marker on Set signal section of your qboard. \n Sending a signal is a requirement for some of the objective cards and doesn't have any other use in the game. \n\n",
+      "roomDescription": "This is generator room \nStart/Stop the Ship's Self - Destruct Countdown \n Place 1 status marker on the 1st (green) space of the self-destruct track, if there is no marker there. \nFrom now on, each time you move the time marker on the time track, also move the self-destruct marker 1 space forward. \nIf a character stops the self-destruct countdown, remove the marker from the track. (It will return to the 1st green space when the countdown is reinitiated.) \nWhen the marker reaches the 1st yellow space on the self-destruct track, the countdown can no longer be stopped. All escape pods automatically open (but can still be closed). \nWhen the marker reaches the last space on the track (with the skull symbol), the ship explodes. \nNote: The self-destruct countdown cannot be started if any character is already hibernated. \nIf jump takes place while the self-destruct countdown is active, the ship explodes. \n\n",
       "isComputer": true,
       "roomActions": [
-        "sendSignal"
+        "startCountdown",
+        "stopCountdown"
       ],
-      "roomStatus": "danger",
-      "itemsCount": 4
+      "roomStatus": "damaged",
+      "itemsCount": 1
     }
   },
   {
@@ -315,13 +315,13 @@
     "assignedRoom": {
       "roomName": "Canteen",
       "roomType": "additional",
-      "roomDescription": "This is canteen \nTime for a snack... \nHeal 1 light wound. \n Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \nIf at least one of the scanned cards is INFECTED, place a Larva on your character qboard (do not remove the INFECTED card!). \n If you already have a Larva figure on your qboard, your character dies. In that case, place 1 Creeper in this room. \n\n",
+      "roomDescription": "This is canteen \nTime for a snack... \nHeal 1 light wound. \n Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \nIf at least one of the scanned cards is INFECTED, place a Larva on your character board (do not remove the INFECTED card!). \n If you already have a Larva figure on your board, your character dies. In that case, place 1 Creeper in this room. \n\n",
       "isComputer": false,
       "roomActions": [
         "healShallowWound"
       ],
       "roomStatus": "damaged",
-      "itemsCount": 2
+      "itemsCount": 3
     }
   },
   {
@@ -338,15 +338,14 @@
       20
     ],
     "assignedRoom": {
-      "roomName": "Command center",
+      "roomName": "Cabins",
       "roomType": "additional",
-      "roomDescription": "This is command center \nOpen/Close Doors \nYou may choose 1 room and open or close any doors in the corridors leading to that room. \n You can decide which doors to open and which to close — you don’t have to open or close all of them. \n\n",
-      "isComputer": true,
+      "roomDescription": "Those are cabins \nTake a deep breath \nIf at the start of a new round your character is in this room and there are no intruders present, draw 1 additional action card (draw up to 6 instead of 5). \n This room action does not work if there is a malfunction marker in the room. \n\n",
+      "isComputer": false,
       "roomActions": [
-        "openDoors",
-        "closeDoors"
+        "restInCabin"
       ],
-      "roomStatus": "damaged",
+      "roomStatus": "fire",
       "itemsCount": 3
     }
   },
@@ -372,7 +371,7 @@
       "roomActions": [
         "checkEngine"
       ],
-      "roomStatus": "damaged",
+      "roomStatus": "fire",
       "itemsCount": 3
     }
   },
@@ -390,15 +389,15 @@
       28
     ],
     "assignedRoom": {
-      "roomName": "Storage",
+      "roomName": "Armory",
       "roomType": "basic",
-      "roomDescription": "This is storage \nSearch for an Item \nDraw 2 cards from the item deck of any color (red, yellow, or blue). \n\n",
+      "roomDescription": "This is armory \nCharge your energetic weapon. \n Add 2 cartridges to one of your energetic weapon. \n Attention! This room doesn't allow to charge classical weapon. \n Attention! Cartridge marker count on weapon's card cannot exceed maximum magazine capacity \n\n",
       "isComputer": false,
       "roomActions": [
-        "searchStorage"
+        "reloadWeapon"
       ],
-      "roomStatus": "silence",
-      "itemsCount": 1
+      "roomStatus": "damaged",
+      "itemsCount": 2
     }
   },
   {
@@ -415,16 +414,16 @@
       25
     ],
     "assignedRoom": {
-      "roomName": "Nest",
+      "roomName": "Decontamination room",
       "roomType": "basic",
-      "roomDescription": "This is nest \nTake 1 Egg \nTake 1 egg from the Intruder qboard, then perform a noise roll. \nThe eggs on the Intruder qboard represent the eggs located in the Nest. When a player takes (or destroys) an egg from the Nest, it is removed from the Intruder qboard. \n Taking an egg from the Intruder qboard costs 2 actions, while picking up an egg token from the main qboard costs only 1 action. \nWhen there are no eggs left in the Nest (all have been taken or destroyed), the Nest is considered destroyed. \nPlace 1 damage marker on the Nest tile – this symbolizes its destruction. \nIf there are eggs in a room on fire and no character is carrying them, destroy one of those eggs during the Event Phase, in the Fire Damage step. \nNote! Remember that an egg is a Heavy Object. \nNote! You cannot perform a Search action in the Nest. \nDestroy 1 Egg \n When your character is in a room that contains eggs not being carried by anyone, you may attempt to destroy them. Eggs can be destroyed using a Shooting or Melee action. Each point of damage (of any type) destroys 1 egg. \nIf the character misses during a melee attack, they do not draw a Contamination card or suffer a Serious Wound. \nYou can also throw a grenade into a room containing uncarried eggs, just like when intruders are present in the room. A grenade destroys 2 eggs. A Molotov cocktail destroys 1 egg. \nAfter each individual attempt to destroy an egg, you must perform a Noise roll. \n\n",
+      "roomDescription": "This is decontamination room \nPerform the Decontamination Procedure \n Scan all Contamination cards (from your hand, action deck, and discard pile). Remove all INFECTED cards. \nIf there is a Larva on your character board, remove it. \n After scanning, your character suffers 1 Light Wound and you automatically pass. Shuffle all your Action cards (including those in hand and in the discard pile) and form a new Action deck. \nNote: After the decontamination procedure, you must always pass. Your hand remains empty until the start of the next round. \n\n",
       "isComputer": false,
       "roomActions": [
-        "destroyNest",
-        "takeEgg"
+        "scanContaminationCards",
+        "removeLarva"
       ],
-      "roomStatus": "damaged",
-      "itemsCount": 3
+      "roomStatus": "door",
+      "itemsCount": 1
     }
   },
   {
@@ -441,15 +440,15 @@
       27
     ],
     "assignedRoom": {
-      "roomName": "Laboratory",
+      "roomName": "Evacuation sector",
       "roomType": "basic",
-      "roomDescription": "This is laboratory \nExamine 1 Object \nThis action can only be performed if the room contains (even if carried by a character) one of the following objects: a crew member’s body, an intruder carcass, or an intruder egg. \n Reveal 1 intruder weakness card related to the object. \nThe object is not discarded after the examination is completed. However, the player may drop it without spending an action. \n\n",
-      "isComputer": true,
+      "roomDescription": "This is evacuation sector \nTry to access emergency capsule. \nYou can only attempt this action if any of sector's capsule is opened and has at least one available slot. \n Make a Ripple roll. If any Nemesis appears in room, your attempt will fail. \n After Ripple roll examination, if no Nemesis appears, you can put your character in one of opened capsules in sector, if at least one empty slot is available. \nEach capsule contains two slots, therefore it can accommodate up to two characters. \nCheck \"Emergency capsules\" frame at the end of this chapter to obtain information what happens once character enters emergency capsule. \nCharacter cannot enter emergency capsule if any Nemesis is present in the room. \n\n",
+      "isComputer": false,
       "roomActions": [
-        "examineObject"
+        "attemptEvacuation"
       ],
       "roomStatus": "damaged",
-      "itemsCount": 1
+      "itemsCount": 2
     }
   },
   {
