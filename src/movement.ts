@@ -54,7 +54,7 @@ export class Movement {
             await this.boardManager.roomDataRevealer(to);
         }
         // cannot be one of this.helpers consts as it cannot be destructured - taken out of an object and assigned to a standalone variable
-        await this.helpers.saveBoardToFile(corridors, 'corridorsBoard.json');
+        await this.helpers.saveFile(corridors, 'corridorsBoard.json');
     }
 
     async moveToRoom() {

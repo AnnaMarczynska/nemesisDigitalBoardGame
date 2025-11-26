@@ -41,7 +41,7 @@ export class BoardManager {
             const corridor = Corridor.createCorridor(Number(id), corridorData.areRipples, corridorData.ripplesValue, corridorData.connectedRooms);
             corridorsBoard.push(corridor);
         }
-        await this.helpers.saveBoardToFile(corridorsBoard, 'corridorsBoard.json');
+        await this.helpers.saveFile(corridorsBoard, 'corridorsBoard.json');
         return corridorsBoard;
     }
 
@@ -68,7 +68,7 @@ export class BoardManager {
                 if (hex.id === 21) hex.assignedRoom = roomsBoard.specialRoomsList[4];
             }
         }
-        await this.helpers.saveBoardToFile(hexesBoard, 'roomsBoard.json');
+        await this.helpers.saveFile(hexesBoard, 'roomsBoard.json');
         return hexesBoard;
     }
 
@@ -77,7 +77,7 @@ export class BoardManager {
         if (isNaN(Number(input)) || Number(input) < 1 || Number(input) > 5) {
             console.log('Invalid number of players. Please enter a number between 1 and 5.');
         }
-        return await this.helpers.saveBoardToFile(input, 'numberOfPlayers.json');
+        return await this.helpers.saveFile(input, 'numberOfPlayers.json');
     }
 
     async setPlayersOnBoard() {
@@ -90,7 +90,7 @@ export class BoardManager {
                 position: 11
             });
         }
-        return await this.helpers.saveBoardToFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
+        return await this.helpers.saveFile(charactersOnBoardPosition, 'charactersPositionOnBoard.json');
     }
 
     async getPlayersOnBoardPositions(): Promise<{ players: string, position: number }[]> {
@@ -117,7 +117,7 @@ export class BoardManager {
             }
             return p;
         });
-        await this.helpers.saveBoardToFile(allPlayersPositions, 'charactersPositionOnBoard.json');
+        await this.helpers.saveFile(allPlayersPositions, 'charactersPositionOnBoard.json');
     }
 
     //function overloading
@@ -144,5 +144,20 @@ export class BoardManager {
                 console.log(enteredRoom.assignedRoom!.roomDescription);
             }
         });
+    }
+
+    async afterGameCleanUp() {
+        let filesToClean = ['roomsBoard.json', 'CaptainCardsToDrawnDeck.json', 'CaptainHandsCards.json', 'MechanicCardsToDrawnDeck.json', 'MechanicHandCards.json',
+            'charactersPositionOnBoard.json', 'gameCoordinates.json', 'numberOfPlayers.json', 'playersOnBoardPosition.json'];
+        for (let file of filesToClean) {
+            if (file) { file = ''; }
+        }
+        switch (filesToClean) {
+            case 'roomsBoard.json':
+                await this.helpers.saveFile(filesToClean, 'roomsBoard.json', );
+                break;
+            default:
+                break;
+        }
     }
 }

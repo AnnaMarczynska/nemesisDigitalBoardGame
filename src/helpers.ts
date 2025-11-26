@@ -15,7 +15,7 @@ export class Helpers {
             });
     }
 
-    async saveBoardToFile(data: any, fileName: string) {
+    async saveFile(data: any, fileName: string) {
         const filePath = path.join(DATA_PATH, fileName);
         await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
     }
