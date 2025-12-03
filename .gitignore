@@ -9,22 +9,11 @@ yarn-error.log*
 .pnp.js
 
 .vscode/*
-.idea/notes.txt
-<<<<<<< HEAD
-dataStorage/board/corridorsBoard.json
-dataStorage/board/roomsBoard.json
-dataStorage/board/charactersPositionOnBoard.json
-dataStorage/gameCoordinates.json
-dataStorage/nemesis/nemesisBag.json
-dataStorage/numberOfPlayers.json
-dataStorage/nemesis/drawnNemesisWeaknessesState.json
-dataStorage/decks
-=======
+.idea/notes.txt=
 dataStorage/corridorsBoard.json
 dataStorage/roomsBoard.json
-dataStorage/board/charactersPositionOnBoard.json
+dataStorage/currentPlayerNumber.json
 dataStorage/coordinates/gameCoordinates.json
 dataStorage/nemesisBag.json
 dataStorage/board/numberOfPlayers.json
 dataStorage/drawnNemesisWeaknessesState.json
->>>>>>> a210f48839ba46f072f3bc84506dfa5f73880c4e

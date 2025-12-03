@@ -72,4 +72,23 @@ export class Helpers {
         }
         return Number(numberOfPlayers);
     }
+
+    async selectCharacter(): Promise<any> {
+        const characters = ['captain', 'soldier', 'scout', 'mechanic', 'scientist', 'pilot'];
+        let choice = await this.askQuestion(`Select number of the character you play:
+        1. Captain
+        2. Soldier
+        3. Scout
+        4. Mechanic
+        5. Scientist
+        6. Pilot
+        > `);
+        if(Number.isInteger(choice) || Number(choice) < 0 || Number(choice) > 5) {
+            console.log('Invalid choice selection. Please select a number between 1 and 6.');
+            return this.selectCharacter(); // recursion
+        }
+        let selectedCharacter = characters[Number(choice) - 1];
+        await this.saveFile(selectedCharacter, 'activePlayer.json', 'board');
+        return selectedCharacter;
+    }
 }

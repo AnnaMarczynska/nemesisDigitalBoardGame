@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Demolition",
+    "actionCost": 2,
+    "description": "Destroy 1 Door or destroy Technical Corridor in your room."
+  },
+  {
+    "title": "Covering Fire",
+    "actionCost": 2,
+    "description": "Use 1 Ammo to let you/ally Escape without Intruder attack."
+  },
+  {
+    "title": "Full Auto",
+    "actionCost": 2,
+    "description": "Spend all Ammo; deal +1 dmg for every 2 Ammo (even on miss)."
+  },
+  {
+    "title": "Taking Aim",
+    "actionCost": 0,
+    "description": "Reroll first miss from an Energy Weapon attack."
+  }
+]

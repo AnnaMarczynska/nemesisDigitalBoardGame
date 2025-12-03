@@ -2,13 +2,13 @@ import {BoardManager} from './board/boardManager';
 import {Movement} from './movement';
 import {RoomsSpecificActions} from "./rooms/roomsSpecificActions";
 import {Nemesis} from "./nemesis";
-import {Characters} from "./characters";
+import {CardsActions} from "./cardsActions";
 
 const boardManager = new BoardManager();
 const movement = new Movement();
 const coordinates = RoomsSpecificActions;
 const nemesis = new Nemesis();
-const characters = new Characters();
+const cardsActions = new CardsActions();
 
 async function gameSetup() {
     console.log('Game setup in progress... 🟩🟩🟩⬜️⬜️ ');
@@ -30,12 +30,12 @@ async function gameSetup() {
     await boardManager.setNumberOfPlayers();
     console.log('Number of players set ✅ ');
 
-    console.log('Placing characters on the qboard... ⏳ ');
+    console.log('Placing cardsActions on the qboard... ⏳ ');
     await boardManager.setPlayersOnBoard();
-    console.log('Characters placed on the qboard ✅ ');
+    console.log('CardsActions placed on the qboard ✅ ');
 
-    console.log('Creating characters decks... ⏳ ');
-    await characters.setDecks();
+    console.log('Creating cardsActions decks... ⏳ ');
+    await cardsActions.setDecks();
 
     console.log('Setting nemesis data... ⏳ ');
     console.log('Setting nemesis bag... ⏳ ');
@@ -63,7 +63,15 @@ async function ripplesTest() {
 
 async function drawCharacterHand() {
     console.log('Drawing character hands... 🃏🃏🃏 ');
-    await characters.drawHandCards();
+    await cardsActions.drawHandCards();
+    console.log('Selecting card to play... 🃏🃏🃏 ');
+    await cardsActions.selectCardToPlay();
+    console.log('Displaying hands cards now... 🃏🃏🃏 ');
+    await cardsActions.displayHandCards();
+    console.log('Selecting card to discard... 🃏🃏🃏 ');
+    await cardsActions.selectCardToDiscard();
+    console.log('Displaying hands cards now... 🃏🃏🃏 ');
+    await cardsActions.displayHandCards();
 }
 
 const scripts: { [key: string]: () => Promise<void> } = {

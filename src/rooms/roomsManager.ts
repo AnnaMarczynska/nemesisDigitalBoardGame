@@ -1,8 +1,8 @@
-import {roomsData} from '../../dataStorage/board/roomsData';
+import {roomsData} from '../../dataStorage/roomsData';
 import {RoomsSpecificActions} from './roomsSpecificActions';
 import {BaseRoom} from './baseRoom';
 import {shuffle} from 'lodash';
-import {RoomStatusesData, roomStatusesData} from '../../dataStorage/board/roomStatusesData';
+import {RoomStatusesData, roomStatusesData} from '../../dataStorage/roomStatusesData';
 
 export class RoomsManager {
 

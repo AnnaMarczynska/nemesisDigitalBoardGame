@@ -1,4 +1,4 @@
-import {RoomsSpecificActions} from "../../src/rooms/roomsSpecificActions";
+import {RoomsSpecificActions} from "../src/rooms/roomsSpecificActions";
 
 // adding interface for data structure consistency and autocompletion support
 export interface RoomsData {

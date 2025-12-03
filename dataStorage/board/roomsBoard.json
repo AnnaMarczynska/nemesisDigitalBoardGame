@@ -1,1 +1,533 @@
-[]
+[
+  {
+    "id": 1,
+    "type": "special",
+    "connectedRooms": [
+      2,
+      3,
+      4
+    ],
+    "relatedCorridors": [
+      1,
+      2,
+      3
+    ],
+    "assignedRoom": {
+      "roomName": "Cockpit",
+      "roomType": "special",
+      "roomDescription": "This is cockpit \nFlight check. \n Check the coordinates OR set journey destination. \n Check the coordinates - check the coordinates card while not showing it to the other players and then put it back.You don't have to tell what you saw. \n Move journey destination marker to selected infield. \nAttention! You cannot change journey destination if there are any characters already in hibernation process. \nYou should remember checked coordinates. \nYou cannot set journey destination if there are any Nemesis in the cockpit. \nAttention! At the end of the game, if spaceship has not been destroyed, coordinates card should be revealedJourney destination marker determines final destination among the 4 possible coordinates. \nAttention! In this room, Search action is not available. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "setCoordinates",
+        "checkCoordinates",
+        "changeCoordinates"
+      ],
+      "roomStatus": "none",
+      "itemsCount": 0
+    }
+  },
+  {
+    "id": 2,
+    "type": "basic",
+    "connectedRooms": [
+      1,
+      6
+    ],
+    "relatedCorridors": [
+      1,
+      6,
+      29
+    ],
+    "assignedRoom": {
+      "roomName": "Fire control center",
+      "roomType": "basic",
+      "roomDescription": "This is fire control center \nInitiate the fire control procedure \n Choose any room.\nRemove the fire token from that room (if there is one). \n All intruders flee from that room (in random directions determined by drawing Event cards – 1 card per intruder). \nTip: You can use the fire control procedure even if there is no fire in the chosen room, in order to drive away intruders located there. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "putOutFire"
+      ],
+      "roomStatus": "door",
+      "itemsCount": 2
+    }
+  },
+  {
+    "id": 3,
+    "type": "basic",
+    "connectedRooms": [
+      1,
+      7
+    ],
+    "relatedCorridors": [
+      2,
+      4
+    ],
+    "assignedRoom": {
+      "roomName": "Generator",
+      "roomType": "basic",
+      "roomDescription": "This is generator room \nStart/Stop the Ship's Self - Destruct Countdown \n Place 1 status marker on the 1st (green) space of the self-destruct track, if there is no marker there. \nFrom now on, each time you move the time marker on the time track, also move the self-destruct marker 1 space forward. \nIf a character stops the self-destruct countdown, remove the marker from the track. (It will return to the 1st green space when the countdown is reinitiated.) \nWhen the marker reaches the 1st yellow space on the self-destruct track, the countdown can no longer be stopped. All escape pods automatically open (but can still be closed). \nWhen the marker reaches the last space on the track (with the skull symbol), the ship explodes. \nNote: The self-destruct countdown cannot be started if any character is already hibernated. \nIf jump takes place while the self-destruct countdown is active, the ship explodes. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "startCountdown",
+        "stopCountdown"
+      ],
+      "roomStatus": "damaged",
+      "itemsCount": 1
+    }
+  },
+  {
+    "id": 4,
+    "type": "basic",
+    "connectedRooms": [
+      1,
+      8
+    ],
+    "relatedCorridors": [
+      3,
+      9,
+      30
+    ],
+    "assignedRoom": {
+      "roomName": "Communication room",
+      "roomType": "basic",
+      "roomDescription": "This is communication room \nSend a signal. \n Put status marker on Set signal section of your qboard. \n Sending a signal is a requirement for some of the objective cards and doesn't have any other use in the game. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "sendSignal"
+      ],
+      "roomStatus": "danger",
+      "itemsCount": 2
+    }
+  },
+  {
+    "id": 5,
+    "type": "basic",
+    "connectedRooms": [
+      6,
+      10
+    ],
+    "relatedCorridors": [
+      5,
+      10,
+      31
+    ],
+    "assignedRoom": {
+      "roomName": "Treatment room",
+      "roomType": "basic",
+      "roomDescription": "This is treatment room \nHeal your wounds. \nBandage all of your severe injuries OR heal one bandaged severe injury OR bandage all of your shallow injuries \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "treatInjury"
+      ],
+      "roomStatus": "damaged",
+      "itemsCount": 2
+    }
+  },
+  {
+    "id": 6,
+    "type": "additional",
+    "connectedRooms": [
+      2,
+      5,
+      7,
+      11
+    ],
+    "relatedCorridors": [
+      5,
+      6,
+      7,
+      11
+    ],
+    "assignedRoom": {
+      "roomName": "Cabins",
+      "roomType": "additional",
+      "roomDescription": "Those are cabins \nTake a deep breath \nIf at the start of a new round your character is in this room and there are no intruders present, draw 1 additional action card (draw up to 6 instead of 5). \n This room action does not work if there is a malfunction marker in the room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "restInCabin"
+      ],
+      "roomStatus": "slime",
+      "itemsCount": 3
+    }
+  },
+  {
+    "id": 7,
+    "type": "additional",
+    "connectedRooms": [
+      3,
+      6,
+      8
+    ],
+    "relatedCorridors": [
+      4,
+      7,
+      8
+    ],
+    "assignedRoom": {
+      "roomName": "Command center",
+      "roomType": "additional",
+      "roomDescription": "This is command center \nOpen/Close Doors \nYou may choose 1 room and open or close any doors in the corridors leading to that room. \n You can decide which doors to open and which to close — you don’t have to open or close all of them. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "openDoors",
+        "closeDoors"
+      ],
+      "roomStatus": "door",
+      "itemsCount": 1
+    }
+  },
+  {
+    "id": 8,
+    "type": "basic",
+    "connectedRooms": [
+      4,
+      7,
+      9,
+      11
+    ],
+    "relatedCorridors": [
+      8,
+      9,
+      12
+    ],
+    "assignedRoom": {
+      "roomName": "Laboratory",
+      "roomType": "basic",
+      "roomDescription": "This is laboratory \nExamine 1 Object \nThis action can only be performed if the room contains (even if carried by a character) one of the following objects: a crew member’s body, an intruder carcass, or an intruder egg. \n Reveal 1 intruder weakness card related to the object. \nThe object is not discarded after the examination is completed. However, the player may drop it without spending an action. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "examineObject"
+      ],
+      "roomStatus": "damaged",
+      "itemsCount": 3
+    }
+  },
+  {
+    "id": 9,
+    "type": "basic",
+    "connectedRooms": [
+      8,
+      12
+    ],
+    "relatedCorridors": [
+      13,
+      14,
+      32
+    ],
+    "assignedRoom": {
+      "roomName": "Decontamination room",
+      "roomType": "basic",
+      "roomDescription": "This is decontamination room \nPerform the Decontamination Procedure \n Scan all Contamination cards (from your hand, action deck, and discard pile). Remove all INFECTED cards. \nIf there is a Larva on your character qboard, remove it. \n After scanning, your character suffers 1 Light Wound and you automatically pass. Shuffle all your Action cards (including those in hand and in the discard pile) and form a new Action deck. \nNote: After the decontamination procedure, you must always pass. Your hand remains empty until the start of the next round. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "scanContaminationCards",
+        "removeLarva"
+      ],
+      "roomStatus": "danger",
+      "itemsCount": 2
+    }
+  },
+  {
+    "id": 10,
+    "type": "basic",
+    "connectedRooms": [
+      5,
+      13
+    ],
+    "relatedCorridors": [
+      10,
+      15
+    ],
+    "assignedRoom": {
+      "roomName": "Armory",
+      "roomType": "basic",
+      "roomDescription": "This is armory \nCharge your energetic weapon. \n Add 2 cartridges to one of your energetic weapon. \n Attention! This room doesn't allow to charge classical weapon. \n Attention! Cartridge marker count on weapon's card cannot exceed maximum magazine capacity \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "reloadWeapon"
+      ],
+      "roomStatus": "door",
+      "itemsCount": 1
+    }
+  },
+  {
+    "id": 11,
+    "type": "special",
+    "connectedRooms": [
+      6,
+      8,
+      14,
+      15
+    ],
+    "relatedCorridors": [
+      11,
+      12,
+      16,
+      17
+    ],
+    "assignedRoom": {
+      "roomName": "Hibernatorium",
+      "roomType": "special",
+      "roomDescription": "This is hibernatorium \nAttempt Hibernation. \n You can only perform this action if the hibernation pods are unlocked – the marker on the time track must be on a blue space. \n Make a Ripple roll. If any Nemesis appears in the room, your attempt to enter the hibernation pod has failed. \n If no Nemesis appears in the room, remove your character’s miniature from the game – you have successfully entered hibernation. You cannot change the ship’s destination or start the self-destruct sequence if any character is in hibernation. \n You cannot enter a hibernation pod if there is a Nemesis in the Hibernatorium. \nNote! You cannot perform the \"Search\" action in this room. \nNote! The onboard computer is programmed to protect hibernated crew members and prevent any actions that might endanger their lives. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "goHibernate"
+      ],
+      "roomStatus": "none",
+      "itemsCount": 0
+    }
+  },
+  {
+    "id": 12,
+    "type": "additional",
+    "connectedRooms": [
+      9,
+      16
+    ],
+    "relatedCorridors": [
+      14,
+      18
+    ],
+    "assignedRoom": {
+      "roomName": "Pods control",
+      "roomType": "additional",
+      "roomDescription": "This is pods control room \nClose/Open 1 Escape Pod \nFlip 1 Escape Pod token to its closed or open side. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "openEscapePod",
+        "closeEscapePod"
+      ],
+      "roomStatus": "damaged",
+      "itemsCount": 1
+    }
+  },
+  {
+    "id": 13,
+    "type": "additional",
+    "connectedRooms": [
+      10,
+      14,
+      19
+    ],
+    "relatedCorridors": [
+      15,
+      19,
+      23
+    ],
+    "assignedRoom": {
+      "roomName": "Canteen",
+      "roomType": "additional",
+      "roomDescription": "This is canteen \nTime for a snack... \nHeal 1 light wound. \n Additionally, you may scan all Contamination cards in your hand and remove all UNINFECTED cards. \nIf at least one of the scanned cards is INFECTED, place a Larva on your character qboard (do not remove the INFECTED card!). \n If you already have a Larva figure on your qboard, your character dies. In that case, place 1 Creeper in this room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "healShallowWound"
+      ],
+      "roomStatus": "damaged",
+      "itemsCount": 3
+    }
+  },
+  {
+    "id": 14,
+    "type": "additional",
+    "connectedRooms": [
+      11,
+      13,
+      17
+    ],
+    "relatedCorridors": [
+      16,
+      19,
+      20
+    ],
+    "assignedRoom": {
+      "roomName": "Surveillance room",
+      "roomType": "additional",
+      "roomDescription": "This is surveillance room \nPeek at 1 Room and its Exploration Token \nPeek at 1 unexplored room and the exploration token placed on it, without showing them to the other players. \nAfter looking, return them to their place. \n You may, but don’t have to, tell the truth about what you saw. \n\n",
+      "isComputer": true,
+      "roomActions": [
+        "checkRoom"
+      ],
+      "roomStatus": "fire",
+      "itemsCount": 4
+    }
+  },
+  {
+    "id": 15,
+    "type": "additional",
+    "connectedRooms": [
+      11,
+      16,
+      18
+    ],
+    "relatedCorridors": [
+      17,
+      21,
+      22,
+      34
+    ],
+    "assignedRoom": {
+      "roomName": "Slime covered room",
+      "roomType": "additional",
+      "roomDescription": "This is slime covered room \nYou've been slimmed!\nWhen you enter this room, you automatically gain a Slime marker. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "getCovered"
+      ],
+      "roomStatus": "door",
+      "itemsCount": 2
+    }
+  },
+  {
+    "id": 16,
+    "type": "basic",
+    "connectedRooms": [
+      12,
+      15,
+      21
+    ],
+    "relatedCorridors": [
+      18,
+      22,
+      28
+    ],
+    "assignedRoom": {
+      "roomName": "Evacuation sector",
+      "roomType": "basic",
+      "roomDescription": "This is evacuation sector \nTry to access emergency capsule. \nYou can only attempt this action if any of sector's capsule is opened and has at least one available slot. \n Make a Ripple roll. If any Nemesis appears in room, your attempt will fail. \n After Ripple roll examination, if no Nemesis appears, you can put your character in one of opened capsules in sector, if at least one empty slot is available. \nEach capsule contains two slots, therefore it can accommodate up to two characters. \nCheck \"Emergency capsules\" frame at the end of this chapter to obtain information what happens once character enters emergency capsule. \nCharacter cannot enter emergency capsule if any Nemesis is present in the room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "attemptEvacuation"
+      ],
+      "roomStatus": "fire",
+      "itemsCount": 3
+    }
+  },
+  {
+    "id": 17,
+    "type": "basic",
+    "connectedRooms": [
+      14,
+      19,
+      20
+    ],
+    "relatedCorridors": [
+      20,
+      24,
+      25
+    ],
+    "assignedRoom": {
+      "roomName": "Nest",
+      "roomType": "basic",
+      "roomDescription": "This is nest \nTake 1 Egg \nTake 1 egg from the Intruder qboard, then perform a noise roll. \nThe eggs on the Intruder qboard represent the eggs located in the Nest. When a player takes (or destroys) an egg from the Nest, it is removed from the Intruder qboard. \n Taking an egg from the Intruder qboard costs 2 actions, while picking up an egg token from the main qboard costs only 1 action. \nWhen there are no eggs left in the Nest (all have been taken or destroyed), the Nest is considered destroyed. \nPlace 1 damage marker on the Nest tile – this symbolizes its destruction. \nIf there are eggs in a room on fire and no character is carrying them, destroy one of those eggs during the Event Phase, in the Fire Damage step. \nNote! Remember that an egg is a Heavy Object. \nNote! You cannot perform a Search action in the Nest. \nDestroy 1 Egg \n When your character is in a room that contains eggs not being carried by anyone, you may attempt to destroy them. Eggs can be destroyed using a Shooting or Melee action. Each point of damage (of any type) destroys 1 egg. \nIf the character misses during a melee attack, they do not draw a Contamination card or suffer a Serious Wound. \nYou can also throw a grenade into a room containing uncarried eggs, just like when intruders are present in the room. A grenade destroys 2 eggs. A Molotov cocktail destroys 1 egg. \nAfter each individual attempt to destroy an egg, you must perform a Noise roll. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "destroyNest",
+        "takeEgg"
+      ],
+      "roomStatus": "door",
+      "itemsCount": 3
+    }
+  },
+  {
+    "id": 18,
+    "type": "basic",
+    "connectedRooms": [
+      15,
+      20,
+      21
+    ],
+    "relatedCorridors": [
+      21,
+      26,
+      27
+    ],
+    "assignedRoom": {
+      "roomName": "Storage",
+      "roomType": "basic",
+      "roomDescription": "This is storage \nSearch for an Item \nDraw 2 cards from the item deck of any color (red, yellow, or blue). \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "searchStorage"
+      ],
+      "roomStatus": "slime",
+      "itemsCount": 4
+    }
+  },
+  {
+    "id": 19,
+    "type": "special",
+    "connectedRooms": [
+      13,
+      17,
+      20
+    ],
+    "relatedCorridors": [
+      23,
+      24,
+      35
+    ],
+    "assignedRoom": {
+      "roomName": "Engine 1",
+      "roomType": "special",
+      "roomDescription": "This is engine room \nCheck the engine \nCheck engine status in this engine room - look up the top engine token while not showing it to the other players. You don't have to tell the truth about it's status to other players. \n The top engine token shows the current status of the engine. \n Fix/Damage engine \n You can make action Repair/Damage on the engine in this room (using action card \"Repairs\" or \"Tools\" tool card): take both engine status tokens, check their values (do not inform other players about those values) and put them back in order chosen by yourself. \nYou don't have to tell the truth about if you have fixed the engine but you need to tell whether you have changed tokens order. \n You can repair/damage an engine even if there is a malfunction marker in the room, and even if you haven’t previously checked the engine status. \nNote! The ship has 3 engines, of which at least 2 must be functional in order to safely return to Earth. At the beginning of the game, players do not know which engines are working. \nPlayers can check the status of a given engine during the game – for example, here, in the appropriate Engine Room. At the end of the game, if the ship has not been destroyed earlier, all top engine tokens must be revealed to determine whether the ship exploded during the hyperspace jump attempt. \nNote! You cannot perform the \"Search\" action in this room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "checkEngine",
+        "changeEngine"
+      ],
+      "roomStatus": "none",
+      "itemsCount": 0
+    }
+  },
+  {
+    "id": 20,
+    "type": "special",
+    "connectedRooms": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "relatedCorridors": [
+      25,
+      26
+    ],
+    "assignedRoom": {
+      "roomName": "Engine 2",
+      "roomType": "special",
+      "roomDescription": "This is engine room \nCheck the engine \nCheck engine status in this engine room - look up the top engine token while not showing it to the other players. You don't have to tell the truth about it's status to other players. \n The top engine token shows the current status of the engine. \n Fix/Damage engine \n You can make action Repair/Damage on the engine in this room (using action card \"Repairs\" or \"Tools\" tool card): take both engine status tokens, check their values (do not inform other players about those values) and put them back in order chosen by yourself. \nYou don't have to tell the truth about if you have fixed the engine but you need to tell whether you have changed tokens order. \n You can repair/damage an engine even if there is a malfunction marker in the room, and even if you haven’t previously checked the engine status. \nNote! The ship has 3 engines, of which at least 2 must be functional in order to safely return to Earth. At the beginning of the game, players do not know which engines are working. \nPlayers can check the status of a given engine during the game – for example, here, in the appropriate Engine Room. At the end of the game, if the ship has not been destroyed earlier, all top engine tokens must be revealed to determine whether the ship exploded during the hyperspace jump attempt. \nNote! You cannot perform the \"Search\" action in this room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "checkEngine",
+        "changeEngine"
+      ],
+      "roomStatus": "none",
+      "itemsCount": 0
+    }
+  },
+  {
+    "id": 21,
+    "type": "special",
+    "connectedRooms": [
+      16,
+      18,
+      20
+    ],
+    "relatedCorridors": [
+      27,
+      28,
+      36
+    ],
+    "assignedRoom": {
+      "roomName": "Engine 3",
+      "roomType": "special",
+      "roomDescription": "This is engine room \nCheck the engine \nCheck engine status in this engine room - look up the top engine token while not showing it to the other players. You don't have to tell the truth about it's status to other players. \n The top engine token shows the current status of the engine. \n Fix/Damage engine \n You can make action Repair/Damage on the engine in this room (using action card \"Repairs\" or \"Tools\" tool card): take both engine status tokens, check their values (do not inform other players about those values) and put them back in order chosen by yourself. \nYou don't have to tell the truth about if you have fixed the engine but you need to tell whether you have changed tokens order. \n You can repair/damage an engine even if there is a malfunction marker in the room, and even if you haven’t previously checked the engine status. \nNote! The ship has 3 engines, of which at least 2 must be functional in order to safely return to Earth. At the beginning of the game, players do not know which engines are working. \nPlayers can check the status of a given engine during the game – for example, here, in the appropriate Engine Room. At the end of the game, if the ship has not been destroyed earlier, all top engine tokens must be revealed to determine whether the ship exploded during the hyperspace jump attempt. \nNote! You cannot perform the \"Search\" action in this room. \n\n",
+      "isComputer": false,
+      "roomActions": [
+        "checkEngine",
+        "changeEngine"
+      ],
+      "roomStatus": "none",
+      "itemsCount": 0
+    }
+  }
+]
