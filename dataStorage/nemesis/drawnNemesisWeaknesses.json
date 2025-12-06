@@ -1,14 +1,14 @@
 {
   "eggWeakness": {
-    "title": "Energy sensitivity",
-    "description": "Each energy weapon attack that deals 1 damage, deals 1 additional damage"
+    "title": "Phosphate sensitivity",
+    "description": "Each Nemesis exposed to Fire extinguisher or Fire Control Center action, falls back and takes 1 damage"
   },
   "nemesisBodyWeakness": {
-    "title": "Stress reaction",
-    "description": "During Surprise attack, Nemesis' Danger token value is reduced by 1 (to min. 1)"
+    "title": "Vitality",
+    "description": "Empty Attack roll again adult Nemesis' is treated as 1 damage"
   },
   "crewMemberBodyWeakness": {
-    "title": "Mobility",
-    "description": "Apart from Queen and Breeders, no other Nemesis can destroy closed doors"
+    "title": "Stress reaction",
+    "description": "During Surprise attack, Nemesis' Danger token value is reduced by 1 (to min. 1)"
   }
 }

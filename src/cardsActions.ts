@@ -13,17 +13,9 @@ export class CardsActions {
 
     async setDecks() {
         let numberOfPlayers = await this.helpers.loadFile('numberOfPlayers.json', 'board');
-        let charactersPlaying: string[] = [];
-        let character: string;
-        console.log('numberOfPlayers', numberOfPlayers);
-        for(let i = 0; i < numberOfPlayers; i++) {
-            character = await this.helpers.selectCharacter();
-            if(charactersPlaying.includes(character)){
-                console.log(`Character ${character} already selected. Please choose a different character.`);
-                await this.helpers.selectCharacter();
-            }
-            console.log('Character selected:', character);
-            charactersPlaying.push(character);
+        for (let i = 0; i <numberOfPlayers; i++) {
+            await this.helpers.selectCharacter();
+            let character = await this.helpers.loadFile('activePlayer.json', 'board');
             let deckName = character + 'Deck';
             let allCards = shuffle(Decks[deckName]);
             let cardsToDrawnDeck: DecksType[] = [];

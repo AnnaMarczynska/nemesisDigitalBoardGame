@@ -1,15 +1,7 @@
 [
   {
-    "type": "larva",
-    "danger": 0
-  },
-  {
     "type": "queen",
     "danger": 4
-  },
-  {
-    "type": "larva",
-    "danger": 0
   },
   {
     "type": "facehugger",
@@ -21,6 +13,14 @@
   },
   {
     "type": "empty",
+    "danger": 0
+  },
+  {
+    "type": "larva",
+    "danger": 0
+  },
+  {
+    "type": "larva",
     "danger": 0
   }
 ]
