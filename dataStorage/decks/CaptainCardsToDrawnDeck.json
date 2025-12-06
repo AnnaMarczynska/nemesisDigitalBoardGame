@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "title": "Motivation",
+    "actionCost": 0,
+    "description": "Everyone in your room draws 1 card."
+  },
+  {
+    "title": "Order",
+    "actionCost": 2,
+    "description": "Move another character to adjacent room (with/without consent)."
+  }
+]

@@ -1,14 +1,14 @@
 {
   "eggWeakness": {
-    "title": "Stress reaction",
-    "description": "During Surprise attack, Nemesis' Danger token value is reduced by 1 (to min. 1)"
+    "title": "Vitality",
+    "description": "Empty Attack roll again adult Nemesis' is treated as 1 damage"
   },
   "nemesisBodyWeakness": {
-    "title": "Endangered species",
-    "description": "Damage amount required to kill Nemesis is reduced by 1"
+    "title": "Fire sensitivity",
+    "description": "When Nemesis suffers from fire, Molotov cocktail or Flamethrower, it takes 1 additional damage"
   },
   "crewMemberBodyWeakness": {
-    "title": "Mobility",
-    "description": "Apart from Queen and Breeders, no other Nemesis can destroy closed doors"
+    "title": "Energy sensitivity",
+    "description": "Each energy weapon attack that deals 1 damage, deals 1 additional damage"
   }
 }

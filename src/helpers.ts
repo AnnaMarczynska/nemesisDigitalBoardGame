@@ -18,7 +18,7 @@ export class Helpers {
     async saveFile(data: any, fileName: string, folderPath?: string) {
         const targetDir = folderPath ? path.join(DATA_PATH, folderPath) : DATA_PATH;
         const filePath = path.join(targetDir, fileName);
-        await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+        await fs.promises.mkdir(path.dirname(filePath), {recursive: true});
         await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
     }
 
@@ -62,14 +62,5 @@ export class Helpers {
                 resolve(response);
             })
         );
-    }
-
-    async getPlayersCount(): Promise<number> {
-        let numberOfPlayers = await this.askQuestion('Enter number of players (1-5): ');
-        if (isNaN(Number(numberOfPlayers)) || Number(numberOfPlayers) < 1 || Number(numberOfPlayers) > 5) {
-            console.log('Invalid number of players. Please enter a number between 1 and 5.');
-            return this.getPlayersCount(); // recursion
-        }
-        return Number(numberOfPlayers);
     }
 }

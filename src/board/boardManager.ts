@@ -147,11 +147,11 @@ export class BoardManager {
     }
 
     async afterGameCleanUp() {
-        let filesToClean = ['roomsBoard.json', 'CaptainCardsToDrawnDeck.json', 'CaptainHandsCards.json', 'MechanicCardsToDrawnDeck.json', 'MechanicHandCards.json',
+        let filesToClean = ['activePlayer.json', 'roomsBoard.json', 'CaptainCardsToDrawnDeck.json', 'CaptainHandCards.json', 'MechanicCardsToDrawnDeck.json', 'MechanicHandCards.json',
             'charactersPositionOnBoard.json', 'gameCoordinates.json', 'drawnNemesisWeaknesses.json', 'nemesisBag.json', 'numberOfPlayers.json', 'currentPlayerNumber.json'];
         for (let file of filesToClean) {
             if (file) {
-                if (file.includes('Board') || file.includes('numberOfPlayers')) {
+                if (file.includes('Board') || file.includes('Player')) {
                     await this.helpers.saveFile([], file, 'board');
                 } else if (file.includes('coordinates') || file.includes('Coordinates')) {
                     await this.helpers.saveFile([], file, 'coordinates');
@@ -160,7 +160,7 @@ export class BoardManager {
                 } else if ((file.includes('nemesis') || file.includes('Nemesis'))) {
                     await this.helpers.saveFile([], file, 'nemesis');
                 } else {
-                    await this.helpers.saveFile([], file);
+                    console.log('Error, file with no specified path:', file);
                 }
             }
         }

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Interruption",
+    "actionCost": 0,
+    "description": "Play when another character declares an Action: cancel or force change."
+  },
+  {
+    "title": "Basic Repairs",
+    "actionCost": 2,
+    "description": "Remove Malfunction marker from current room."
+  },
+  {
+    "title": "Adrenaline",
+    "actionCost": 0,
+    "description": "Immediately Escape or Shoot and draw 1 card."
+  },
+  {
+    "title": "Rest",
+    "actionCost": 1,
+    "description": "Heal 1 Light Wound OR scan a Contamination card and remove if infected."
+  },
+  {
+    "title": "Demolition",
+    "actionCost": 2,
+    "description": "Destroy 1 Door or destroy Technical Corridor in your room."
+  },
+  {
+    "title": "Reconnaissance",
+    "actionCost": 1,
+    "description": "Move without rolling for Noise."
+  },
+  {
+    "title": "Suppressive Fire",
+    "actionCost": 2,
+    "description": "Escape yourself or another without Intruder attack (discard 1 Ammo)."
+  },
+  {
+    "title": "Search",
+    "actionCost": 1,
+    "description": "Draw 2 cards from the Item deck of this room’s color."
+  },
+  {
+    "title": "Scavenging",
+    "actionCost": 1,
+    "description": "Perform Search even if room is empty."
+  },
+  {
+    "title": "Search",
+    "actionCost": 1,
+    "description": "Draw 2 cards from the Item deck of this room’s color."
+  }
+]

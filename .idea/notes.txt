@@ -1,0 +1,11 @@
+The Factory Pattern is not about "static" specifically —
+it’s about delegating the creation logic of an object to a separate place (method or class) instead of calling new directly all over the codebase.
+
+class with only static methods acts similarly:
+It’s just a namespace of related functions that don’t depend on instance state.
+
+Summary: static vs factory vs instance
+Concept	            Meaning	                                        When to use
+Instance method	    Operates on an existing object (this exists)	When behavior depends on that object’s data
+Static method	    Belongs to the class, not an instance	        When you want utility or creation logic accessible without an object
+Factory Pattern	    Centralized logic for object creation	        When new logic is repetitive, complex, or varies by type
