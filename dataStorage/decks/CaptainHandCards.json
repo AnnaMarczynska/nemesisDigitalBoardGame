@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "title": "Reload",
+    "actionCost": 1,
+    "description": "Add 1 Ammo to your weapon."
+  },
+  {
+    "title": "Demolition",
+    "actionCost": 2,
+    "description": "Destroy 1 Door or destroy Technical Corridor in your room."
+  },
+  {
+    "title": "Interruption",
+    "actionCost": 0,
+    "description": "Play when another character declares an Action: cancel or force change."
+  }
+]

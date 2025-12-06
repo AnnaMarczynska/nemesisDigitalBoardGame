@@ -1,52 +1,12 @@
 [
   {
-    "title": "Interruption",
-    "actionCost": 0,
-    "description": "Play when another character declares an Action: cancel or force change."
-  },
-  {
     "title": "Motivation",
     "actionCost": 0,
     "description": "Everyone in your room draws 1 card."
   },
   {
-    "title": "Basic Repairs",
-    "actionCost": 2,
-    "description": "Remove Malfunction marker from current room."
-  },
-  {
-    "title": "Rest",
-    "actionCost": 1,
-    "description": "Heal 1 Light Wound OR scan a Contamination card and remove if infected."
-  },
-  {
     "title": "Order",
     "actionCost": 2,
     "description": "Move another character to adjacent room (with/without consent)."
-  },
-  {
-    "title": "Demolition",
-    "actionCost": 2,
-    "description": "Destroy 1 Door or destroy Technical Corridor in your room."
-  },
-  {
-    "title": "Search",
-    "actionCost": 1,
-    "description": "Draw 2 cards from the Item deck of this room’s color."
-  },
-  {
-    "title": "Reload",
-    "actionCost": 1,
-    "description": "Add 1 Ammo to your weapon."
-  },
-  {
-    "title": "Suppressive Fire",
-    "actionCost": 2,
-    "description": "Escape yourself or another without Intruder attack (discard 1 Ammo)."
-  },
-  {
-    "title": "Search",
-    "actionCost": 1,
-    "description": "Draw 2 cards from the Item deck of this room’s color."
   }
 ]

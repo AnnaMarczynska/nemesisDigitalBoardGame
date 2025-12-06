@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "title": "Search",
+    "actionCost": 1,
+    "description": "Draw 2 cards from the Item deck of this room’s color."
+  },
+  {
+    "title": "Demolition",
+    "actionCost": 2,
+    "description": "Destroy 1 Door or destroy Technical Corridor in your room."
+  },
+  {
+    "title": "Ingenuity",
+    "actionCost": 1,
+    "description": "Craft item using any Yellow Item as component; also repair malfunction/engine."
+  },
+  {
+    "title": "Fast Repairs",
+    "actionCost": 0,
+    "description": "Remove Malfunction marker from current room."
+  },
+  {
+    "title": "Technical Corridors",
+    "actionCost": 1,
+    "description": "Move via Technical Corridors without drawing Event card."
+  },
+  {
+    "title": "Interruption",
+    "actionCost": 0,
+    "description": "Play when another character declares an Action: cancel or force change."
+  },
+  {
+    "title": "Search",
+    "actionCost": 1,
+    "description": "Draw 2 cards from the Item deck of this room’s color."
+  },
+  {
+    "title": "Rest",
+    "actionCost": 1,
+    "description": "Heal 1 Light Wound OR scan a Contamination card and remove if infected."
+  },
+  {
+    "title": "Computer Skills",
+    "actionCost": 1,
+    "description": "Open/Close Door or use Computer room action for free."
+  },
+  {
+    "title": "Pyrotechnics",
+    "actionCost": 1,
+    "description": "Discard Fire marker OR discard an Item to place Fire marker."
+  }
+]

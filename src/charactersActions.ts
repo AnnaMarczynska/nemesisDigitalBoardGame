@@ -4,33 +4,24 @@ export class CharacterActions {
     selectedCharacters: string[] = [];
     helpers: Helpers = new Helpers();
 
-    async selectCharacter(mode: 'single' | 'multi'){
-        let playersCount: number;
-        if (mode === 'single') {
-            playersCount = 1;
-        } else {
-            playersCount = await this.helpers.loadFile('numberOfPlayers.json', 'board');
-        }
+    async selectCharacter(){
         const allCharacters = ['captain', 'soldier', 'scout', 'mechanic', 'scientist', 'pilot'];
         let selectedCharacter: string = '';
         let choice: number;
 
-
-        for (let i = 0; i < playersCount; i++) {
             let indexValidationResult = false;
             let duplicateValidationResult = false;
             while (!indexValidationResult || !duplicateValidationResult) {
                 choice = await this.characterChoice();
-                indexValidationResult = await this.validateCharacterSelectionIndex(choice);
+                indexValidationResult = this.validateCharacterSelectionIndex(choice);
                 if(indexValidationResult) {
                     selectedCharacter = allCharacters[Number(choice) - 1];
-                    duplicateValidationResult = await this.validateCharacterDuplicateSelection(selectedCharacter);
+                    duplicateValidationResult = this.validateCharacterDuplicateSelection(selectedCharacter);
                 }
             }
             console.log('Character selected:', selectedCharacter);
             this.selectedCharacters.push(selectedCharacter);
             await this.helpers.saveFile(selectedCharacter, 'activePlayer.json', 'board');
-        }
     }
 
     async characterChoice() {
